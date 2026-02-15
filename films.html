@@ -1,40 +1,56 @@
-<script>
-  // Store audio element and its state.
-  const audioElement = document.getElementById('background-audio');
-  let isAudioPlaying = true;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Films</title>
+    <script>
+        let audio;
+        let video;
 
-  // Function to check audio state.
-  function checkAudioState() {
-    if (localStorage.getItem('audioState') === 'paused') {
-      audioElement.pause();
-      isAudioPlaying = false;
-    } else {
-      audioElement.play();
-      isAudioPlaying = true;
-    }
-  }
+        function setupMedia() {
+            audio = document.getElementById('background-music');
+            video = document.getElementById('video-player');
 
-  // Event listener for video elements.
-  const videoElements = document.querySelectorAll('video');
-  videoElements.forEach(video => {
-    video.addEventListener('play', () => {
-      if (isAudioPlaying) { 
-        localStorage.setItem('audioState', 'paused');
-        audioElement.pause();
-      }
-    });
-    video.addEventListener('pause', () => {
-      if (isAudioPlaying) {
-        audioElement.play();
-        localStorage.setItem('audioState', 'playing');
-      }
-    });
-    video.addEventListener('ended', () => {
-      localStorage.setItem('audioState', 'playing');
-      audioElement.play();
-    });
-  });
+            video.addEventListener('play', function() {
+                audio.pause();
+            });
 
-  // Run check on page load.
-  window.addEventListener('load', checkAudioState);
-</script>
+            video.addEventListener('pause', function() {
+                audio.play();
+            });
+
+            video.addEventListener('ended', function() {
+                audio.play();
+            });
+        }
+
+        window.onload = setupMedia;
+    </script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Films</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h1>Films</h1>
+        <section id="video-section">
+            <video id="video-player" controls>
+                <source src="path/to/video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2026 Your Company</p>
+    </footer>
+    <audio id="background-music" loop>
+        <source src="path/to/background-music.mp3" type="audio/mpeg">
+        Your browser does not support the audio tag.
+    </audio>
+</body>
+</html>
