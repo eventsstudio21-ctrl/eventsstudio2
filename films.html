@@ -1,27 +1,40 @@
-function openFullscreen() {
-    var elem = document.getElementById("myVideo");
+<script>
+  // Store audio element and its state.
+  const audioElement = document.getElementById('background-audio');
+  let isAudioPlaying = true;
 
-    // Check if the element is already in fullscreen
-    if (document.fullscreenElement) {
-        // If it is, exit fullscreen
-        document.exitFullscreen();
+  // Function to check audio state.
+  function checkAudioState() {
+    if (localStorage.getItem('audioState') === 'paused') {
+      audioElement.pause();
+      isAudioPlaying = false;
     } else {
-        // Attempt to request fullscreen for mobile with allowance for fullscreen
-        if (elem.requestFullscreen) {
-            elem.requestFullscreen({ navigationUI: 'hide' });
-        } else if (elem.webkitRequestFullscreen) { // Safari
-            elem.webkitRequestFullscreen({ navigationUI: 'hide' });
-        } else if (elem.msRequestFullscreen) { // IE11
-            elem.msRequestFullscreen();
-        } else {
-            console.error('Fullscreen API is not supported by this browser.');
-        }
+      audioElement.play();
+      isAudioPlaying = true;
     }
-}
+  }
 
-// Better error handling for iOS devices
-document.addEventListener('webkitfullscreenchange', function() {
-    if (!document.webkitFullscreenElement) {
-        console.log('Exited fullscreen mode.');
-    }
-});
+  // Event listener for video elements.
+  const videoElements = document.querySelectorAll('video');
+  videoElements.forEach(video => {
+    video.addEventListener('play', () => {
+      if (isAudioPlaying) { 
+        localStorage.setItem('audioState', 'paused');
+        audioElement.pause();
+      }
+    });
+    video.addEventListener('pause', () => {
+      if (isAudioPlaying) {
+        audioElement.play();
+        localStorage.setItem('audioState', 'playing');
+      }
+    });
+    video.addEventListener('ended', () => {
+      localStorage.setItem('audioState', 'playing');
+      audioElement.play();
+    });
+  });
+
+  // Run check on page load.
+  window.addEventListener('load', checkAudioState);
+</script>
