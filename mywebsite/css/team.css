@@ -1,0 +1,241 @@
+/* =========================== TEAM =========================== */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.team-member {
+    text-align: center;
+    transition: all 0.2s ease;
+    padding: 2rem;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Theme 1 - Royal Gold */
+.team-member.theme-1 {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    border: 3px solid #d4af37;
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+}
+.team-member.theme-1:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+}
+.team-member.theme-1 .member-image {
+    border: 3px solid #d4af37;
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+}
+
+/* Theme 2 - Ocean Blue */
+.team-member.theme-2 {
+    background: linear-gradient(135deg, #0a1929 0%, #1e3a5f 100%);
+    border: 3px solid #00bcd4;
+    box-shadow: 0 5px 15px rgba(0, 188, 212, 0.2);
+}
+.team-member.theme-2:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 188, 212, 0.3);
+}
+.team-member.theme-2 .member-image {
+    border: 3px solid #00bcd4;
+    box-shadow: 0 5px 15px rgba(0, 188, 212, 0.2);
+}
+
+/* Theme 3 - Forest Green */
+.team-member.theme-3 {
+    background: linear-gradient(135deg, #0d2818 0%, #1a4332 100%);
+    border: 3px solid #4caf50;
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.2);
+}
+.team-member.theme-3:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(76, 175, 80, 0.3);
+}
+.team-member.theme-3 .member-image {
+    border: 3px solid #4caf50;
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.2);
+}
+
+/* Theme 4 - Sunset Orange */
+.team-member.theme-4 {
+    background: linear-gradient(135deg, #2d1b17 0%, #4a2c2a 100%);
+    border: 3px solid #ff6b35;
+    box-shadow: 0 5px 15px rgba(255, 107, 53, 0.2);
+}
+.team-member.theme-4:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
+}
+.team-member.theme-4 .member-image {
+    border: 3px solid #ff6b35;
+    box-shadow: 0 5px 15px rgba(255, 107, 53, 0.2);
+}
+
+/* Theme 5 - Purple Galaxy */
+.team-member.theme-5 {
+    background: linear-gradient(135deg, #1a0033 0%, #330066 100%);
+    border: 3px solid #9c27b0;
+    box-shadow: 0 5px 15px rgba(156, 39, 176, 0.2);
+}
+.team-member.theme-5:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(156, 39, 176, 0.3);
+}
+.team-member.theme-5 .member-image {
+    border: 3px solid #9c27b0;
+    box-shadow: 0 5px 15px rgba(156, 39, 176, 0.2);
+}
+
+/* Theme 6 - Ruby Red */
+.team-member.theme-6 {
+    background: linear-gradient(135deg, #2d0a0a 0%, #4a1414 100%);
+    border: 3px solid #e91e63;
+    box-shadow: 0 5px 15px rgba(233, 30, 99, 0.2);
+}
+.team-member.theme-6:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(233, 30, 99, 0.3);
+}
+.team-member.theme-6 .member-image {
+    border: 3px solid #e91e63;
+    box-shadow: 0 5px 15px rgba(233, 30, 99, 0.2);
+}
+
+/* Theme 7 - Cyan Tech */
+.team-member.theme-7 {
+    background: linear-gradient(135deg, #003d3d 0%, #006666 100%);
+    border: 3px solid #00acc1;
+    box-shadow: 0 5px 15px rgba(0, 172, 193, 0.2);
+}
+.team-member.theme-7:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 172, 193, 0.3);
+}
+.team-member.theme-7 .member-image {
+    border: 3px solid #00acc1;
+    box-shadow: 0 5px 15px rgba(0, 172, 193, 0.2);
+}
+
+/* Theme 8 - Pink Rose */
+.team-member.theme-8 {
+    background: linear-gradient(135deg, #2d1a1a 0%, #4a2626 100%);
+    border: 3px solid #ff69b4;
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
+}
+.team-member.theme-8:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(255, 105, 180, 0.3);
+}
+.team-member.theme-8 .member-image {
+    border: 3px solid #ff69b4;
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
+}
+
+.member-image {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: all 0.4s var(--ease-smooth);
+}
+
+.member-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(60%);
+    transition: all 0.4s var(--ease-smooth);
+}
+
+.team-member:hover .member-image img {
+    filter: grayscale(0%);
+    transform: scale(1.1);
+}
+
+.member-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.team-member:hover .member-image::before {
+    opacity: 1;
+}
+
+.member-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: var(--color-light);
+}
+
+.member-role {
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--color-accent);
+}
+
+/* Animated Divider */
+.animated-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 3rem 0;
+    position: relative;
+}
+
+.divider-line {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ff6b35, transparent);
+    flex: 1;
+    margin: 0 2rem;
+    position: relative;
+}
+
+.divider-line::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+    animation: shimmer 3s infinite;
+}
+
+.divider-center {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #ff6b35, #ff8c42);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+    position: relative;
+    z-index: 2;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3); }
+    50% { transform: scale(1.05); box-shadow: 0 15px 40px rgba(255, 107, 53, 0.5); }
+}

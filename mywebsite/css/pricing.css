@@ -1,0 +1,128 @@
+/* =========================== PRICING PACKAGES =========================== */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: none;
+    margin-top: 3rem;
+}
+
+.package-card {
+    background: var(--color-dark-secondary);
+    border: 1px solid var(--color-border);
+    padding: 2.5rem;
+    border-radius: 6px;
+    text-align: center;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.package-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+    transition: left 0.6s var(--ease-smooth);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.package-card:hover::before {
+    left: 100%;
+}
+
+.package-card.featured {
+    border-color: var(--color-accent);
+    transform: scale(1.02);
+    box-shadow: 0 15px 30px rgba(212, 175, 55, 0.15);
+}
+
+.package-badge {
+    position: absolute;
+    top: -12px;
+    right: 20px;
+    background: var(--color-accent);
+    color: var(--color-dark);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.package-name {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+/* Smaller font for album package name */
+.album-details .package-name {
+    font-size: 1.1rem;
+}
+
+.package-price {
+    font-size: 2.5rem;
+    color: var(--color-accent);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.package-duration {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+}
+
+.package-features {
+    list-style: none;
+    margin: 2rem 0;
+    text-align: left;
+}
+
+.package-features li {
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    transition: all 0.3s var(--ease-smooth);
+}
+
+.package-card:hover .package-features li {
+    color: var(--color-light);
+    padding-left: 0.5rem;
+}
+
+.package-features li::before {
+    content: '✓';
+    color: var(--color-accent);
+    font-weight: bold;
+    margin-right: 0.8rem;
+    display: inline-block;
+    transition: transform 0.3s var(--ease-smooth);
+}
+
+.package-card:hover .package-features li::before {
+    transform: scale(1.1);
+}
+
+.package-card:hover {
+    border-color: var(--color-accent);
+    background: var(--color-dark-tertiary);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(212, 175, 55, 0.15);
+}
+
+.package-card:hover .package-price {
+    animation: priceGlow 0.6s ease-in-out;
+}
+
+@keyframes priceGlow {
+    0%, 100% { color: var(--color-accent); }
+    50% { color: var(--color-accent-hover); text-shadow: 0 0 20px rgba(212, 175, 55, 0.5); }
+}

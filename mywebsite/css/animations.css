@@ -1,0 +1,219 @@
+/* =========================== ANIMATIONS =========================== */
+
+/* Smooth page transitions */
+.page-transition {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-transition.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Navigation hover effects */
+.nav-link {
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--color-accent);
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::before {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: var(--color-accent-hover) !important;
+    transform: translateY(-2px);
+}
+
+/* Button animations */
+.btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translate(-50%, -50%);
+    transition: all 0.5s ease;
+}
+
+.btn:hover::before {
+    width: 300%;
+    height: 300%;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 107, 53, 0.3);
+}
+
+/* Hero content animations */
+.hero-title-wrapper {
+    animation: fadeInUp 1s ease-out;
+}
+
+.cta-group .btn {
+    animation: slideInUp 0.8s ease-out;
+    animation-fill-mode: both;
+}
+
+.cta-group .btn:nth-child(1) { animation-delay: 0.1s; }
+.cta-group .btn:nth-child(2) { animation-delay: 0.2s; }
+.cta-group .btn:nth-child(3) { animation-delay: 0.3s; }
+.cta-group .btn:nth-child(4) { animation-delay: 0.4s; }
+.cta-group .btn:nth-child(5) { animation-delay: 0.5s; }
+
+/* Section fade in animations */
+.section-header {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.package-card {
+    animation: fadeInUp 0.8s ease-out;
+    animation-fill-mode: both;
+}
+
+.package-card:nth-child(1) { animation-delay: 0.1s; }
+.package-card:nth-child(2) { animation-delay: 0.2s; }
+.package-card:nth-child(3) { animation-delay: 0.3s; }
+.package-card:nth-child(4) { animation-delay: 0.4s; }
+
+.gallery-item {
+    animation: fadeInUp 0.8s ease-out;
+    animation-fill-mode: both;
+}
+
+.gallery-item:nth-child(1) { animation-delay: 0.05s; }
+.gallery-item:nth-child(2) { animation-delay: 0.1s; }
+.gallery-item:nth-child(3) { animation-delay: 0.15s; }
+.gallery-item:nth-child(4) { animation-delay: 0.2s; }
+.gallery-item:nth-child(5) { animation-delay: 0.25s; }
+
+.team-member {
+    animation: fadeInUp 0.8s ease-out;
+    animation-fill-mode: both;
+}
+
+.team-member:nth-child(1) { animation-delay: 0.1s; }
+.team-member:nth-child(2) { animation-delay: 0.2s; }
+.team-member:nth-child(3) { animation-delay: 0.3s; }
+.team-member:nth-child(4) { animation-delay: 0.4s; }
+
+.service-card {
+    animation: fadeInUp 0.8s ease-out;
+    animation-fill-mode: both;
+}
+
+.service-card:nth-child(1) { animation-delay: 0.1s; }
+.service-card:nth-child(2) { animation-delay: 0.2s; }
+.service-card:nth-child(3) { animation-delay: 0.3s; }
+
+/* Footer animations */
+footer {
+    animation: fadeInUp 1s ease-out;
+}
+
+/* Keyframe animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Loading animation */
+.page-loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.page-loading::after {
+    content: '';
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--color-accent);
+    border-top: 3px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Enhanced hover effects */
+.gallery-item:hover img {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+}
+
+.package-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    transition: transform 0.3s ease;
+}

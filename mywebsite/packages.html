@@ -1,0 +1,1722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Events Studio - Wedding photography and cinematography packages. Flexible pricing options for your special day.">
+    <meta name="theme-color" content="#0a0a0a">
+    <title>Our Packages | Events Studio - Wedding Photography Pricing</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Events Studio" />
+    <link rel="manifest" href="assets/favicon/site.webmanifest" />
+    
+    <!-- External Resources -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Translation System -->
+    <script src="js/translations.js"></script>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/bootstrap-custom.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/portfolio.css">
+    <link rel="stylesheet" href="css/footer.css">
+        
+    <!-- Professional Package Animations -->
+    <style>
+        /* Body padding for fixed navbar */
+        body {
+            padding-top: 80px !important;
+        }
+        
+        /* Ensure navbar has proper z-index and fixed position */
+        #navbar,
+        .navbar,
+        nav#navbar.navbar.navbar-expand-lg.navbar-dark.fixed-top {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+            z-index: 9999 !important;
+            transform: translateY(0) !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            display: block !important;
+        }
+        
+        /* Override any scroll-based hiding */
+        .navbar-hidden,
+        .navbar.scrolled {
+            transform: translateY(0) !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        
+        /* Package Card Layout */
+        .package-card {
+            opacity: 0;
+            transform: translateY(80px) scale(0.9) rotateX(15deg);
+            transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            animation: professionalSlideIn 1.2s ease-out forwards;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            border: 2px solid rgba(255, 107, 53, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            padding: 0;
+            margin-bottom: 2rem;
+        }
+        
+        .package-header {
+            text-align: center;
+            padding: 2rem 1.5rem 1rem;
+            border-bottom: 1px solid rgba(255, 107, 53, 0.2);
+        }
+        
+        .package-content {
+            padding: 1.5rem;
+        }
+        
+        .package-section {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(255, 107, 53, 0.05);
+            border-radius: 10px;
+            border-left: 3px solid #ff6b35;
+        }
+        
+        .section-title {
+            color: #ff6b35;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .section-details {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .section-details li {
+            color: #ffffff;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            position: relative;
+            line-height: 1.4;
+        }
+        
+        .section-details li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #ff6b35;
+            font-weight: bold;
+        }
+        
+        .package-duration {
+            color: #ff6b35;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+        
+        .package-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.1), transparent);
+            transition: left 1s ease;
+        }
+        
+        .package-card:hover::before {
+            left: 100%;
+        }
+        
+        .package-card:nth-child(1) {
+            animation-delay: 0.2s;
+            border-color: rgba(255, 107, 53, 0.3);
+        }
+        
+        .package-card:nth-child(2) {
+            animation-delay: 0.4s;
+            border-color: rgba(255, 107, 53, 0.4);
+        }
+        
+        .package-card:nth-child(3) {
+            animation-delay: 0.6s;
+            border-color: rgba(255, 107, 53, 0.4);
+        }
+        
+        .package-card:nth-child(4) {
+            animation-delay: 0.8s;
+            border-color: rgba(255, 107, 53, 0.3);
+        }
+        
+        .package-card:nth-child(5) {
+            animation-delay: 1.0s;
+            border-color: rgba(255, 107, 53, 0.3);
+        }
+        
+        .package-card:nth-child(6) {
+            animation-delay: 1.2s;
+            border-color: rgba(255, 107, 53, 0.3);
+        }
+        
+        .package-card:nth-child(7) {
+            animation-delay: 1.4s;
+            border-color: rgba(255, 107, 53, 0.3);
+        }
+        
+        .package-card.featured {
+            animation-delay: 0.4s;
+            background: linear-gradient(135deg, #0a0a0a 0%, #2a1515 100%);
+            border-color: #ff6b35;
+            box-shadow: 0 25px 50px rgba(255, 107, 53, 0.2);
+            transform: scale(1.05);
+        }
+        
+        @keyframes professionalSlideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(80px) scale(0.9) rotateX(15deg);
+                filter: blur(10px) brightness(0.5);
+            }
+            50% {
+                opacity: 0.7;
+                transform: translateY(20px) scale(1.05) rotateX(5deg);
+                filter: blur(5px) brightness(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1) rotateX(0deg);
+                filter: blur(0) brightness(1);
+            }
+        }
+        
+        .package-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 35px 70px rgba(255, 107, 53, 0.4);
+            border-color: #ff6b35;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a1515 100%);
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .package-card.featured:hover {
+            transform: translateY(-15px) scale(1.07);
+            box-shadow: 0 40px 80px rgba(255, 107, 53, 0.5);
+            border-color: #ff8c42;
+            background: linear-gradient(135deg, #2a1515 0%, #3a1a1a 100%);
+        }
+        
+        /* Professional Badge Animation */
+        .package-badge {
+            animation: professionalPulse 3s infinite;
+            background: linear-gradient(45deg, #ff6b35, #ff8c42, #ffa500);
+            color: #000000;
+            font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            border-radius: 25px;
+            padding: 8px 20px;
+            position: relative;
+            overflow: hidden;
+            font-size: 0.8rem;
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            z-index: 10;
+        }
+        
+        .package-badge::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: badgeShine 3s infinite;
+        }
+        
+        @keyframes professionalPulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(255, 107, 53, 0.4);
+            }
+            50% {
+                transform: scale(1.08);
+                box-shadow: 0 0 35px rgba(255, 107, 53, 0.6);
+            }
+        }
+        
+        @keyframes badgeShine {
+            0% { left: -100%; }
+            50%, 100% { left: 100%; }
+        }
+        
+        /* Professional Price Animation */
+        .package-price {
+            animation: professionalPriceSlide 1s ease-out;
+            color: #ff6b35;
+            text-shadow: 0 0 25px rgba(255, 107, 53, 0.5);
+            font-weight: bold;
+            font-size: 2.5rem;
+            position: relative;
+            margin: 1rem 0;
+        }
+        
+        .package-price::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ff6b35, #ff8c42, #ffa500);
+            animation: priceUnderline 1.5s ease-out forwards;
+        }
+        
+        @keyframes professionalPriceSlide {
+            0% {
+                opacity: 0;
+                transform: translateX(-50px) translateY(20px);
+                color: #000000;
+            }
+            50% {
+                color: #ff8c42;
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0) translateY(0);
+                color: #ff6b35;
+            }
+        }
+        
+        @keyframes priceUnderline {
+            0% { width: 0; }
+            100% { width: 80%; }
+        }
+        
+        /* Professional Button Animation */
+        .btn {
+            animation: professionalButtonFade 1.2s ease-out 1s forwards;
+            opacity: 0;
+            background: linear-gradient(45deg, #ff6b35, #ff8c42);
+            border: none;
+            color: #000000;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 15px 30px;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+            width: 100%;
+            margin: 1.5rem 0;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn:hover {
+            background: linear-gradient(45deg, #ff8c42, #ffa500);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.5);
+        }
+        
+        @keyframes professionalButtonFade {
+            0% {
+                opacity: 0;
+                transform: translateY(30px) scale(0.9);
+                background: linear-gradient(45deg, #000000, #1a1a1a);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                background: linear-gradient(45deg, #ff6b35, #ff8c42);
+            }
+        }
+        
+        /* Professional Header Animation */
+        .section-header {
+            opacity: 0;
+            animation: professionalHeaderFade 1.5s ease-out forwards;
+        }
+        
+        .section-header h1 {
+            background: linear-gradient(45deg, #ff6b35, #ff8c42, #ffa500, #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 40px rgba(255, 107, 53, 0.4);
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        
+        @keyframes professionalHeaderFade {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+                filter: brightness(0.3);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: brightness(1);
+            }
+        }
+        
+        /* Professional Logo Animation */
+        .team-logo-img {
+            animation: professionalLogoRotate 2s ease-out 0.3s;
+            filter: drop-shadow(0 0 30px rgba(255, 107, 53, 0.6));
+        }
+        
+        @keyframes professionalLogoRotate {
+            0% {
+                opacity: 0;
+                transform: rotate(-360deg) scale(0.3);
+                filter: hue-rotate(180deg) brightness(0.3);
+            }
+            100% {
+                opacity: 1;
+                transform: rotate(0) scale(1);
+                filter: hue-rotate(0deg) brightness(1);
+            }
+        }
+        
+        /* Professional Package Name */
+        .package-name {
+            color: #ff6b35;
+            text-shadow: 0 0 20px rgba(255, 107, 53, 0.4);
+            font-weight: bold;
+            letter-spacing: 1px;
+            animation: professionalNameGlow 2s infinite alternate;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .package-card.featured .package-name {
+            color: #ffa500;
+            text-shadow: 0 0 25px rgba(255, 165, 0, 0.6);
+        }
+        
+        @keyframes professionalNameGlow {
+            0%, 100% { text-shadow: 0 0 20px rgba(255, 107, 53, 0.4); }
+            50% { text-shadow: 0 0 30px rgba(255, 107, 53, 0.6); }
+        }
+        
+        /* Custom Package Styles */
+        .package-card.custom-package {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 100%);
+            border-color: rgba(255, 107, 53, 0.2);
+        }
+        
+        .package-card.custom-package .package-name {
+            color: #ff8c42;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .package-card {
+                margin-bottom: 1.5rem;
+            }
+            
+            .package-header {
+                padding: 1.5rem 1rem 0.8rem;
+            }
+            
+            .package-content {
+                padding: 1rem;
+            }
+            
+            .package-section {
+                margin-bottom: 1rem;
+                padding: 0.8rem;
+            }
+            
+            .package-price {
+                font-size: 2rem;
+            }
+            
+            .package-name {
+                font-size: 1.5rem;
+            }
+        }
+        
+        /* Hamburger Menu Styles */
+        .hamburger-modern {
+            width: 35px;
+            height: 30px;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger-modern:hover {
+            transform: scale(1.05);
+        }
+        
+        .line {
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #ff6b35, #ff8c42);
+            border-radius: 2px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .line::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .hamburger-modern:hover .line::after {
+            left: 100%;
+        }
+        
+        .line1 {
+            transform-origin: center;
+            animation: pulse1 2s infinite ease-in-out;
+        }
+        
+        .line2 {
+            transform-origin: center;
+            animation: pulse2 2s infinite ease-in-out 0.3s;
+        }
+        
+        .line3 {
+            transform-origin: center;
+            animation: pulse3 2s infinite ease-in-out 0.6s;
+        }
+        
+        @keyframes pulse1 {
+            0%, 100% { transform: scaleX(1); }
+            50% { transform: scaleX(0.85); }
+        }
+        
+        @keyframes pulse2 {
+            0%, 100% { transform: scaleX(1); }
+            50% { transform: scaleX(0.7); }
+        }
+        
+        @keyframes pulse3 {
+            0%, 100% { transform: scaleX(1); }
+            50% { transform: scaleX(0.85); }
+        }
+        
+        /* Active state - transforms to X */
+        .navbar-toggler.active .hamburger-modern {
+            transform: rotate(90deg);
+        }
+        
+        .navbar-toggler.active .line1 {
+            transform: rotate(45deg) translate(6px, 6px);
+            animation: none;
+            background: #ff8c42;
+        }
+        
+        .navbar-toggler.active .line2 {
+            opacity: 0;
+            transform: scaleX(0);
+            animation: none;
+        }
+        
+        .navbar-toggler.active .line3 {
+            transform: rotate(-45deg) translate(6px, -6px);
+            animation: none;
+            background: #ff8c42;
+        }
+        
+        .navbar-toggler.active .line::after {
+            display: none;
+        }
+        
+        /* Remove default styles */
+        .navbar-toggler {
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+            background: transparent !important;
+            padding: 8px !important;
+        }
+        
+        .navbar-toggler:focus {
+            box-shadow: none !important;
+            outline: none !important;
+        }
+        
+        /* Glow effect */
+        .hamburger-modern::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 8px;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.2) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .hamburger-modern:hover::before {
+            opacity: 1;
+        }
+        
+        /* Dynamic Navigation Button Styles */
+        .nav-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: #ffffff;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(255, 140, 66, 0.1));
+            border: 2px solid rgba(255, 107, 53, 0.3);
+            border-radius: 50px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            backdrop-filter: blur(10px);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            min-width: 160px;
+            z-index: 1;
+        }
+        
+        .nav-btn-text {
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+            border-radius: 50px;
+            transform: translateX(-100%);
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 0;
+        }
+        
+        .nav-btn-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 3;
+        }
+        
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.6s ease;
+            z-index: 1;
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            border-color: #ff6b35;
+            box-shadow: 0 15px 35px rgba(255, 107, 53, 0.4);
+            color: #000000;
+        }
+        
+        .nav-btn:hover .nav-btn-bg {
+            transform: translateX(0);
+        }
+        
+        .nav-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .nav-btn:hover .nav-btn-text {
+            transform: scale(1.1);
+            font-weight: 700;
+        }
+        
+        .nav-btn:active {
+            transform: translateY(-1px) scale(1.02);
+            transition: all 0.1s ease;
+        }
+        
+        /* Particle effects */
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(0) translateX(0) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                transform: translateY(-100px) translateX(var(--x-offset)) scale(0);
+                opacity: 0;
+            }
+        }
+        
+        .nav-btn:hover .nav-btn-particles::before,
+        .nav-btn:hover .nav-btn-particles::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ffffff;
+            border-radius: 50%;
+            animation: particleFloat 1s ease-out infinite;
+        }
+        
+        .nav-btn:hover .nav-btn-particles::before {
+            top: 50%;
+            left: 20%;
+            --x-offset: -20px;
+            animation-delay: 0s;
+        }
+        
+        .nav-btn:hover .nav-btn-particles::after {
+            top: 50%;
+            right: 20%;
+            --x-offset: 20px;
+            animation-delay: 0.3s;
+        }
+        
+        /* Glow effect */
+        .nav-btn::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff6b35, #ff8c42, #ffa500, #ff6b35);
+            border-radius: 50px;
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.3s ease;
+            background-size: 300% 300%;
+            animation: gradientShift 3s ease infinite;
+        }
+        
+        .nav-btn:hover::after {
+            opacity: 0.6;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Navbar link animations */
+        .navbar-nav .nav-link {
+            position: relative;
+            padding: 10px 15px;
+            color: rgba(255, 255, 255, 0.8) !important;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .navbar-nav .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #ff6b35, #ff8c42);
+            transform: translateX(-50%);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .navbar-nav .nav-link:hover {
+            color: #ff6b35 !important;
+            transform: translateY(-2px);
+        }
+        
+        .navbar-nav .nav-link:hover::before {
+            width: 80%;
+        }
+        
+        .navbar-nav .nav-link.active {
+            color: #ff6b35 !important;
+        }
+        
+        .navbar-nav .nav-link.active::before {
+            width: 80%;
+        }
+        
+        /* Prevent text wrapping in navigation links and brand */
+        .navbar-nav .nav-link {
+            white-space: nowrap !important;
+        }
+        
+        .navbar-brand {
+            white-space: nowrap !important;
+            display: flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        .navbar-brand div {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        .navbar-brand img {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        /* Animated Divider Styles */
+        .animated-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 3rem 0;
+            position: relative;
+            height: 40px;
+        }
+        
+        .divider-line {
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ff6b35, transparent);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .divider-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+            animation: dividerShine 3s ease-in-out infinite;
+        }
+        
+        .divider-dots {
+            display: flex;
+            gap: 15px;
+            margin: 0 20px;
+            align-items: center;
+        }
+        
+        .divider-dots span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ff6b35;
+            position: relative;
+            animation: dotPulse 2s ease-in-out infinite;
+        }
+        
+        .divider-dots span:nth-child(1) {
+            animation-delay: 0s;
+        }
+        
+        .divider-dots span:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+        
+        .divider-dots span:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+        
+        @keyframes dividerShine {
+            0% {
+                left: -100%;
+            }
+            50% {
+                left: 100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+        
+        /* Service Details - Single Line Layout */
+        .service-details .section-details li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 107, 53, 0.05);
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            border-left: 3px solid #ff6b35;
+        }
+        
+        .service-details .section-details li::before {
+            display: none;
+        }
+        
+        @keyframes dotPulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.7;
+                box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.4);
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+                box-shadow: 0 0 0 10px rgba(255, 107, 53, 0);
+            }
+        }
+    </style>
+</head>
+<body data-page-title="nav_packages">
+
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+        <source src="assets/Song-bg.mp3" type="audio/mpeg">
+        <source src="Song-bg.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <script>
+        // Continuous background music across pages
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('bgMusic');
+            const savedTime = sessionStorage.getItem('musicTime');
+            const wasPlaying = sessionStorage.getItem('musicPlaying');
+            
+            console.log('Music element:', audio);
+            console.log('Music files:', audio.children);
+            console.log('Saved time:', savedTime);
+            console.log('Was playing:', wasPlaying);
+            
+            // Set volume to 0.3%
+            audio.volume = 0.003;
+            
+            // Restore playback position and state
+            if (savedTime) {
+                audio.currentTime = parseFloat(savedTime);
+                console.log('Restored time to:', audio.currentTime);
+            }
+            
+            // Only auto-play if it was playing before
+            if (wasPlaying === 'true') {
+                console.log('Was playing, attempting to resume...');
+                // Try to play music (may be blocked by browser)
+                const playPromise = audio.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        console.log('Music resumed successfully');
+                    }).catch(e => {
+                        console.log('Autoplay prevented:', e);
+                        console.log('Will start on user interaction');
+                        // Add click listener to start music on first interaction
+                        document.addEventListener('click', function startMusic() {
+                            console.log('User clicked, starting music');
+                            audio.play().then(() => {
+                                console.log('Music started after user interaction');
+                                sessionStorage.setItem('musicPlaying', 'true');
+                            }).catch(e2 => console.log('Play failed:', e2));
+                            document.removeEventListener('click', startMusic);
+                        }, { once: true });
+                    });
+                }
+            } else {
+                console.log('First visit - music will start on first click');
+                // Add click listener to start music on first interaction
+                document.addEventListener('click', function startMusic() {
+                    console.log('First user click, starting music');
+                    audio.play().then(() => {
+                        console.log('Music started on first interaction');
+                        sessionStorage.setItem('musicPlaying', 'true');
+                    }).catch(e2 => console.log('Play failed:', e2));
+                    document.removeEventListener('click', startMusic);
+                }, { once: true });
+            }
+            
+            // Save current time and playing state periodically
+            setInterval(() => {
+                if (!audio.paused) {
+                    sessionStorage.setItem('musicTime', audio.currentTime.toString());
+                    sessionStorage.setItem('musicPlaying', 'true');
+                }
+            }, 1000);
+            
+            // Save state when page is unloading
+            window.addEventListener('beforeunload', function() {
+                console.log('Page unloading, saving state');
+                sessionStorage.setItem('musicTime', audio.currentTime.toString());
+                sessionStorage.setItem('musicPlaying', !audio.paused ? 'true' : 'false');
+            });
+            
+            // Prevent music from stopping on navigation clicks
+            document.addEventListener('click', function(e) {
+                const target = e.target.closest('a');
+                if (target && target.href) {
+                    console.log('Navigation detected, keeping music state');
+                    // Don't interrupt music on navigation
+                    e.preventDefault();
+                    setTimeout(() => {
+                        window.location.href = target.href;
+                    }, 100);
+                }
+            });
+        });
+    </script>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a href="index.html" class="navbar-brand d-flex align-items-center gap-3">
+                <div>Events <span>Studio</span></div>
+                <img src="assets/favicon/favicon-96x96.png" alt="Events Studio Logo" height="60" loading="lazy" decoding="async">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger-modern">
+                    <div class="line line1"></div>
+                    <div class="line line2"></div>
+                    <div class="line line3"></div>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html" data-translate="nav_home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="galleries.html" data-translate="nav_galleries">Galleries</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="films.html" data-translate="nav_films">Films</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="packages.html" data-translate="nav_packages">Our Packages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="team.html" data-translate="nav_team">Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html" data-translate="nav_contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== PRICING SECTION ===== -->
+    <section id="pricing" class="alternate-bg">
+        <div class="container-wide">
+            <div class="section-header">
+                <p class="section-subtitle" data-translate="investment">Investment</p>
+                <h1 data-translate="nav_packages">Our Packages</h1>
+                <div class="section-divider"></div>
+                <div class="team-logo">
+                    <img src="assets/favicon/web-app-manifest-512x512.png" alt="Events Studio Logo" class="team-logo-img">
+                </div>
+                <p class="section-description" style="font-size: 0.9rem; line-height: 1.4;" data-translate="packages_description">
+                    Flexible packages designed to fit your vision and budget. Every package includes full-day coverage, premium editing, and digital delivery.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PRICING SECTION ===== -->
+    <section id="pricing">
+        <div class="container-wide">
+            <div class="pricing-grid">
+                <!-- Bronze Package -->
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3 class="package-name" data-translate="bronze_package">Bronze</h3>
+                        <div class="package-price">$1,000</div>
+                    </div>
+                    
+                    <div class="package-content">
+                        <div class="package-section">
+                            <h4 class="section-title" data-translate="album">Album</h4>
+                            <ul class="section-details">
+                                <li data-translate="size_info">size: 25x50cm</li>
+                                <li data-translate="page_info">page: 10 pano</li>
+                                <li data-translate="content_info">content: 20-25 photos</li>
+                            </ul>
+                        </div>
+
+                        <div class="package-section">
+                            <h4 class="section-title" data-translate="video">Video</h4>
+                            <ul class="section-details">
+                                <li data-translate="bride_groom_video">bride & groom's video clip</li>
+                                <li data-translate="duration_info">duration 2-3 minutes</li>
+                            </ul>
+                        </div>
+
+                        <div class="package-section">
+                            <h4 class="section-title" data-translate="photo">Photo</h4>
+                            <ul class="section-details">
+                                <li data-translate="quantity_info">quantity: 1</li>
+                                <li data-translate="photo_size_info">size: 30x45cm</li>
+                            </ul>
+                        </div>
+
+                        <div class="package-section">
+                            <h4 class="section-title" data-translate="gifts">Gifts</h4>
+                            <ul class="section-details">
+                                <li data-translate="gift_info">64GB USB that contains raw & edited photos with final video clip</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-secondary" onclick="window.location.href='contact.html'" data-translate="book_now">Inquire Now</button>
+                </div>
+
+                <!-- Animated Divider -->
+                <div class="animated-divider">
+                    <div class="divider-line"></div>
+                    <div class="divider-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="divider-line"></div>
+                </div>
+
+                <!-- Silver Package -->
+                <div class="package-card featured">
+                    <div class="package-badge" >Most Popular</div>
+                    <div class="package-header">
+                        <h3 class="package-name" data-translate="silver_package">Silver</h3>
+                        <div class="package-price">$1,500</div>
+                        <p class="package-duration" data-translate="package_include">The package include:</p>
+                    </div>
+                    
+                    <div class="package-content">
+                        <div class="package-section">
+                            <h4 class="section-title" data-translate="album">Album</h4>
+                            <ul class="section-details">
+                                <li data-translate="size_info">size: 30x60cm</li>
+                                <li data-translate="page_info">page: 9 pano</li>
+                                <li data-translate="content_info">content: 18-22 photos</li>
+                            </ul>
+                        </div>
+
+                        <div class="package-section">
+                            <h4 class="section-title" data-translate="video">Video</h4>
+                            <ul class="section-details">
+                                <li data-translate="bride_groom_video_clips">bride & groom's video clips :2-3 minutes</li>
+                                <li data-translate="one_video_occasion">one video for occasion</li>
+                                <li data-translate="three_cameras">3 cameras (video - photo - drone)</li>
+                            </ul>
+                        </div>
+
+                        <div class="package-section">
+                            <h4 class="section-title" data-translate="photo">Photo</h4>
+                            <ul class="section-details">
+                                <li data-translate="wall_photo_large">wall photo - size: 40x60cm</li>
+                                <li data-translate="photos_occasion">photos of occasion 100</li>
+                            </ul>
+                        </div>
+
+                        <div class="package-section">
+                            <h4 class="section-title" data-translate="gifts">Gifts</h4>
+                            <ul class="section-details">
+                                <li data-translate="gift_info">64GB USB that contains raw & edited photos with final video clip</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-secondary" onclick="window.location.href='contact.html'" data-translate="book_now">Inquire Now</button>
+                </div>
+
+                <!-- Animated Divider -->
+                <div class="animated-divider">
+                    <div class="divider-line"></div>
+                    <div class="divider-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="divider-line"></div>
+                </div>
+
+                <!-- Gold Package -->
+                <div class="package-card" style="overflow: hidden; word-wrap: break-word; max-width: 100%;">
+                    <div class="package-header">
+                        <h3 class="package-name" data-translate="gold_package">Gold</h3>
+                        <div class="package-price">$2,000</div>
+                    </div>
+                    
+                    <div class="package-content" style="font-size: 0.75rem; word-wrap: break-word; overflow-wrap: break-word; max-width: 100%;">
+                        <div class="package-section">
+                            <h4 class="section-title" data-translate="album">Album</h4>
+                            <ul class="section-details" style="font-size: 0.7rem; word-wrap: break-word; overflow-wrap: break-word;">
+                                <li data-translate="size_info">size: 30x80cm</li>
+                                <li data-translate="page_info">page: 10 pano</li>
+                                <li data-translate="content_info">content: 20-28 photos</li>
+                            </ul>
+                        </div>
+
+                        <div class="package-section">
+                            <h4 class="section-title" data-translate="video">Video</h4>
+                            <ul class="section-details" style="font-size: 0.7rem; word-wrap: break-word; overflow-wrap: break-word;">
+                                <li data-translate="bride_groom_video">bride & groom's video clip (VIP) : 2-4 minutes</li>
+                                <li data-translate="one_video_occasion">one video for occasion</li>
+                                <li data-translate="three_cameras">5 cameras (ronin - tripod - drone - crane -photo)</li>
+                            </ul>
+                        </div>
+
+                        <div class="package-section">
+                            <h4 class="section-title" data-translate="photo">Photo</h4>
+                            <ul class="section-details" style="font-size: 0.7rem; word-wrap: break-word; overflow-wrap: break-word;">
+                                <li data-translate="wall_photo_size">one wall photo - size: 50x75cm</li>
+                                <li data-translate="unlimited_photos">unlimited photos of occasion</li>
+                                <li data-translate="printed_photos">250 printed photo - size: 15x21cm</li>
+                            </ul>
+                        </div>
+
+                        <div class="package-section">
+                            <h4 class="section-title" data-translate="gifts">Gifts</h4>
+                            <ul class="section-details" style="font-size: 0.7rem; word-wrap: break-word; overflow-wrap: break-word;">
+                                <li data-translate="two_usb">2x 64GB USB that contains to raw</li>
+                                <li data-translate="edited_photos">edited photos with final video</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-secondary" onclick="window.location.href='contact.html'" data-translate="book_now">Inquire Now</button>
+                </div>
+
+                <!-- Animated Divider -->
+                <div class="animated-divider">
+                    <div class="divider-line"></div>
+                    <div class="divider-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="divider-line"></div>
+                </div>
+
+                <!-- Platinum Package -->
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3 class="package-name" data-translate="platinum_package">Platinum</h3>
+                        <div class="package-price">$2,500</div>
+                    </div>
+                    
+                    <div class="package-content">
+                        <div class="package-section">
+                            <h4 class="section-title" data-translate="album">Album</h4>
+                            <ul class="section-details">
+                                <li data-translate="size_info">size: 30x80cm</li>
+                                <li data-translate="page_info">page: 10 pano</li>
+                                <li data-translate="content_info">content: 30-35 photos</li>
+                            </ul>
+                        </div>
+
+                        <div class="package-section">
+                            <h4 class="section-title" data-translate="video">Video</h4>
+                            <ul class="section-details">
+                                <li data-translate="bride_groom_video">bride & groom's video clip (VIP) : 3-5 minutes</li>
+                                <li data-translate="one_video_occasion">one video for occasion</li>
+                                <li data-translate="six_cameras">6 cameras (2 video - drone - crane - 2 photo)</li>
+                                <li data-translate="live_stream">live stream</li>
+                            </ul>
+                        </div>
+
+                        <div class="package-section">
+                            <h4 class="section-title" data-translate="photo">Photo</h4>
+                            <ul class="section-details">
+                                <li data-translate="wall_photo_size">one wall photo - size: 50x75cm</li>
+                                <li data-translate="unlimited_photos">unlimited photos of occasion</li>
+                                <li data-translate="printed_photos">300 printed photo - size: 15x21cm</li>
+                            </ul>
+                        </div>
+
+                        <div class="package-section">
+                            <h4 class="section-title" data-translate="gifts">Gifts</h4>
+                            <ul class="section-details">
+                                <li data-translate="hard_disk">1TB hard disk + 2x 128GB USB that contains to raw</li>
+                                <li data-translate="edited_photos">edited photos with final video</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-secondary" onclick="window.location.href='contact.html'" data-translate="book_now">Inquire Now</button>
+                </div>
+
+                <!-- Animated Divider -->
+                <div class="animated-divider">
+                    <div class="divider-line"></div>
+                    <div class="divider-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="divider-line"></div>
+                </div>
+
+                <!-- Diamond Package -->
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3 class="package-name" data-translate="diamond_package">Diamond</h3>
+                        <div class="package-price">$3,000</div>
+                        <p class="package-duration" data-translate="two_days_shooting">The package includes two days of shooting:</p>
+                    </div>
+                    
+                    <div class="package-content">
+                        <div class="package-section">
+                            <h4 class="section-title" data-translate="vip">VIP</h4>
+                            <ul class="section-details">
+                                <li data-translate="first_day_diamond">1st day diamond</li>
+                                <li data-translate="second_day_silver">2nd day silver package</li>
+                            </ul>
+                        </div>
+
+                        <div class="package-section">
+                            <h4 class="section-title" data-translate="album">Album</h4>
+                            <ul class="section-details">
+                                <li data-translate="size_desired">size: as desired</li>
+                                <li data-translate="page_info">page: 20 pano</li>
+                                <li data-translate="content_info">content: 40-45 photos</li>
+                            </ul>
+                        </div>
+
+                        <div class="package-section">
+                            <h4 class="section-title" data-translate="video">Video</h4>
+                            <ul class="section-details">
+                                <li data-translate="bride_groom_video">bride & groom's video clip (VIP) : 3-5 minutes</li>
+                                <li data-translate="one_video_occasion">one video for occasion</li>
+                                <li data-translate="seven_cameras">7 cameras (3 video - drone - crane - 2 photo)</li>
+                                <li data-translate="live_stream">live stream</li>
+                            </ul>
+                        </div>
+
+                        <div class="package-section">
+                            <h4 class="section-title" data-translate="photo">Photo</h4>
+                            <ul class="section-details">
+                                <li data-translate="two_wall_photos">two wall photo - size: 60x90cm</li>
+                                <li data-translate="unlimited_photos">unlimited photos of occasion</li>
+                                <li data-translate="printed_photos">400 printed photo - size: 15x21cm</li>
+                            </ul>
+                        </div>
+
+                        <div class="package-section">
+                            <h4 class="section-title" data-translate="gifts">Gifts</h4>
+                            <ul class="section-details">
+                                <li data-translate="hard_disk">1TB hard disk + 2x 128GB USB that contains to raw</li>
+                                <li data-translate="edited_photos">edited photos with final video</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-secondary" onclick="window.location.href='contact.html'" data-translate="book_now">Inquire Now</button>
+                </div>
+
+                <!-- Elite Package -->
+                <div class="package-card" style="overflow: hidden; word-wrap: break-word; max-width: 100%;">
+                    <div class="package-header">
+                        <h3 class="package-name" data-translate="elite_package">Elite</h3>
+                        <div class="package-price">$4,500</div>
+                        <p class="package-duration" data-translate="two_days_shooting" style="font-size: 0.75rem; line-height: 1.2; margin: 0;">The package includes two days of shooting:</p>
+                    </div>
+                    
+                    <div class="package-content" style="font-size: 0.75rem; word-wrap: break-word; overflow-wrap: break-word; max-width: 100%;">
+                        <div class="package-section">
+                            <h4 class="section-title" data-translate="vip">VIP</h4>
+                            <ul class="section-details" style="font-size: 0.7rem; word-wrap: break-word; overflow-wrap: break-word;">
+                                <li data-translate="first_day_elite">1st day elite</li>
+                                <li data-translate="second_day_gold">2nd day GOLD package</li>
+                            </ul>
+                        </div>
+
+                        <div class="package-section">
+                            <h4 class="section-title" data-translate="album">Album</h4>
+                            <ul class="section-details" style="font-size: 0.7rem; word-wrap: break-word; overflow-wrap: break-word;">
+                                <li data-translate="size_desired">size: as desired</li>
+                                <li data-translate="page_info">page: 20 pano</li>
+                                <li data-translate="content_info">content: 40-50 photos</li>
+                            </ul>
+                        </div>
+
+                        <div class="package-section">
+                            <h4 class="section-title" data-translate="video">Video</h4>
+                            <ul class="section-details" style="font-size: 0.7rem; word-wrap: break-word; overflow-wrap: break-word;">
+                                <li data-translate="bride_groom_video">bride & groom's video clip (VIP) : 3-5 minutes</li>
+                                <li data-translate="one_video_occasion">one video for occasion</li>
+                                <li data-translate="eight_cameras">8 cameras (4 video - drone - crane - 2 photo)</li>
+                                <li data-translate="live_stream">live stream</li>
+                                <li data-translate="lighting_dj">lighting with DJ</li>
+                            </ul>
+                        </div>
+
+                        <div class="package-section">
+                            <h4 class="section-title" data-translate="photo">Photo</h4>
+                            <ul class="section-details" style="font-size: 0.7rem; word-wrap: break-word; overflow-wrap: break-word;">
+                                <li data-translate="two_wall_photos">two wall photo - size: 60x90cm</li>
+                                <li data-translate="unlimited_photos">unlimited photos of occasion</li>
+                                <li data-translate="unlimited_printed">unlimited printed photos - size: 15x21cm</li>
+                            </ul>
+                        </div>
+
+                        <div class="package-section">
+                            <h4 class="section-title" data-translate="gifts">Gifts</h4>
+                            <ul class="section-details" style="font-size: 0.7rem; word-wrap: break-word; overflow-wrap: break-word;">
+                                <li data-translate="three_usb">1TB hard disk + 3x 128GB USB that contains to raw</li>
+                                <li data-translate="edited_photos">edited photos with final video</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-secondary" onclick="window.location.href='contact.html'" data-translate="book_now">Inquire Now</button>
+                </div>
+
+                <!-- Custom Package -->
+                <div class="package-card custom-package">
+                    <div class="package-header">
+                        <h3 class="package-name" data-translate="custom_package">Custom Package?</h3>
+                    </div>
+                    <div class="package-content">
+                        <p style="text-align: center; color: var(--color-text-muted); margin: 2rem 0; font-size: 0.85rem; line-height: 1.3;" data-translate="custom_description">
+                            Every couple is unique. Let's discuss a customized offering tailored to your vision and needs.
+                        </p>
+                    </div>
+                    <button class="btn btn-primary" onclick="window.location.href='contact.html'" data-translate="get_in_touch">Get in Touch</button>
+                </div>
+
+                <!-- Equipment Details -->
+                <div class="package-card equipment-details">
+                    <div class="package-header">
+                        <h3 class="package-name" data-translate="equipments">Equipments</h3>
+                    </div>
+                    
+                    <div class="package-content">
+                        <div class="package-section">
+                            <h4 class="section-title" data-translate="available_equipment">Available Equipment</h4>
+                            <ul class="section-details">
+                                <li class="price-item">
+                                    <span data-translate="video_camera_item">Video camera Ronin</span>
+                                    <span class="price">$300</span>
+                                </li>
+                                <li class="price-item">
+                                    <span data-translate="drone_camera_item">Drone camera</span>
+                                    <span class="price">$200</span>
+                                </li>
+                                <li class="price-item">
+                                    <span data-translate="camera_crane_item">Camera crane</span>
+                                    <span class="price">$400</span>
+                                </li>
+                                <li class="price-item">
+                                    <span data-translate="live_stream_mixer_item">Live stream mixer</span>
+                                    <span class="price">$350</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-secondary" onclick="window.location.href='contact.html'" data-translate="inquire_equipment">Inquire About Equipment</button>
+                </div>
+
+                <!-- Service Details -->
+                <div class="package-card service-details">
+                    <div class="package-header">
+                        <h3 class="package-name" data-translate="service">Service</h3>
+                    </div>
+                    
+                        <div class="package-section">
+                            <h4 class="section-title" data-translate="available_services">Available Services</h4>
+                            <ul class="section-details">
+                                <li class="price-item">
+                                    <span data-translate="occasion_photos_unlimited_item">Occasion photos unlimited</span>
+                                    <span class="price">$200</span>
+                                </li>
+                                <li class="price-item">
+                                    <span data-translate="photo_session_item">Photo session 10-15 edited</span>
+                                    <span class="price">$200</span>
+                                </li>
+                                <li class="price-item">
+                                    <span data-translate="video_clip_item">Video clip 2-3 minutes</span>
+                                    <span class="price">$300</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-secondary" onclick="window.location.href='contact.html'" data-translate="inquire_service">Inquire About Service</button>
+                </div>
+
+                <!-- Wall Photos Details -->
+                <div class="package-card wall-photos-details">
+                    <div class="package-header">
+                        <h3 class="package-name" data-translate="wall_photos">Wall Photos</h3>
+                    </div>
+                    
+                    <div class="package-content">
+                        <div class="package-section">
+                            <h4 class="section-title" data-translate="available_sizes">Available Sizes</h4>
+                            <ul class="section-details">
+                                <li class="price-item">
+                                    <span data-translate="size_20x30_item">20x30cm</span>
+                                    <span class="price">IQD 10,000</span>
+                                </li>
+                                <li class="price-item">
+                                    <span data-translate="size_30x45_item">30x45cm</span>
+                                    <span class="price">IQD 20,000</span>
+                                </li>
+                                <li class="price-item">
+                                    <span data-translate="size_40x60_item">40x60cm</span>
+                                    <span class="price">IQD 40,000</span>
+                                </li>
+                                <li class="price-item">
+                                    <span data-translate="size_50x75_item">50x75cm</span>
+                                    <span class="price">IQD 50,000</span>
+                                </li>
+                                <li class="price-item">
+                                    <span data-translate="size_60x90_item">60x90cm</span>
+                                    <span class="price">IQD 60,000</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-secondary" onclick="window.location.href='contact.html'" data-translate="inquire_wall_photos">Inquire About Wall Photos</button>
+                </div>
+
+                <!-- Album Details -->
+                <div class="package-card album-details featured">
+                    <div class="package-badge" >Popular</div>
+                    <div class="package-header">
+                        <h3 class="package-name" data-translate="album">Album</h3>
+                    </div>
+                    
+                    <div class="package-content">
+                        <div class="package-section">
+                            <h4 class="section-title" data-translate="album_options">Album Options</h4>
+                            <ul class="section-details">
+                                <li class="price-item">
+                                    <span data-translate="album_25x50_item">25x50 - 10-13 photos</span>
+                                    <span class="price">$200</span>
+                                </li>
+                                <li class="price-item">
+                                    <span data-translate="album_30x50_item">30x50 - 18-20 photos</span>
+                                    <span class="price">$300</span>
+                                </li>
+                                <li class="price-item">
+                                    <span data-translate="album_25x70_item">25x70 - 18-22 photos</span>
+                                    <span class="price">$350</span>
+                                </li>
+                                <li class="price-item">
+                                    <span data-translate="album_30x60_item">30x60 - 20-23 photos</span>
+                                    <span class="price">$400</span>
+                                </li>
+                                <li class="price-item">
+                                    <span data-translate="album_30x80_item">30x80 - 23-28 photos</span>
+                                    <span class="price">$500</span>
+                                </li>
+                                <li class="price-item">
+                                    <span data-translate="album_vip_item">VIP - 40-45 photos</span>
+                                    <span class="price">$80</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-secondary" onclick="window.location.href='contact.html'" data-translate="inquire_album">Inquire About Album</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.5rem;">
+                    <img src="assets/favicon/favicon-96x96.png" alt="Events Studio Logo" class="developer-photo" style="width: 60px; height: 60px; border-radius: 50%; border: 3px solid #ff6b35; padding: 5px; background: rgba(255, 107, 53, 0.1);">
+                    <span style="color: #ff6b35; font-weight: 600; font-size: 1.1rem;">Events Studio</span>
+                </div>
+                <p data-translate="footer_description" style="color: var(--color-text-muted); font-size: 0.8rem; margin-bottom: 0.8rem; line-height: 1.3;">Luxury wedding photography & cinematography. Crafting timeless stories since 2025.</p>
+                <div class="social-links" style="margin-top: 0.8rem; display: flex; justify-content: center; gap: 0.8rem;">
+                    <a href="https://www.instagram.com/events.studi0?igsh=MTRwaDYyYjhjM21haQ==" target="_blank"  title="Instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@events.studi0?_r=1&_t=ZS-93ZK33YRGg1" target="_blank"  title="TikTok" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://snapchat.com/t/erS92aZh" target="_blank"  title="Snapchat" aria-label="Snapchat"><i class="fab fa-snapchat"></i></a>
+                    <a href="https://wa.me/9647510579521" target="_blank"  title="WhatsApp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4 data-translate="quick_links">Quick Links</h4>
+                <ul>
+                    <li><a href="index.html" data-translate="nav_home">Home</a></li>
+                    <li><a href="galleries-new.html" data-translate="nav_galleries">Galleries</a></li>
+                    <li><a href="films.html" data-translate="nav_films">Films</a></li>
+                    <li><a href="packages.html" data-translate="nav_packages">Our Packages</a></li>
+                    <li><a href="team.html" data-translate="nav_team">Team</a></li>
+                    <li><a href="contact.html" data-translate="nav_contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4 data-translate="services">Services</h4>
+                <ul>
+                    <li><a href="#" data-translate="photography">Photography</a></li>
+                    <li><a href="#" data-translate="cinematography">Cinematography</a></li>
+                    <li><a href="#" data-translate="highlight_reels">Highlight Reels</a></li>
+                    <li><a href="#" data-translate="post_production">Post-Production</a></li>
+                    <li><a href="#" data-translate="albums_prints">Albums & Prints</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4 data-translate="contact_info">Contact</h4>
+                <p style="color: var(--color-text-muted); font-size: 0.9rem; line-height: 1.8;">
+                    <strong data-translate="email_label">Email:</strong><br>
+                    <a href="mailto:eventsstudio21@gmail.com">eventsstudio21@gmail.com</a><br><br>
+                    <strong data-translate="phone_label">Phone:</strong><br>
+                    <a href="tel:+9647504145732">+964 750 414 5732</a><br><br>
+                    <strong data-translate="whatsapp_label">WhatsApp:</strong><br>
+                    <a href="https://wa.me/9647510579521">+964 751 057 9521</a><br><br>
+                    <strong data-translate="location_label">Location:</strong><br>
+                    <div style="background: rgba(255, 107, 53, 0.1); border: 1px solid rgba(255, 107, 53, 0.3); border-radius: 8px; padding: 0.8rem; margin-top: 0.5rem;">
+                        <a href="https://maps.google.com/maps?q=37.145811,42.660593&ll=37.145811,42.660593&z=16" target="_blank" style="color: #ff6b35; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span data-translate="location_text">Zakho - Duhok - Erbil 📍</span>
+                        </a>
+                    </div>
+                    <br><br>
+                    <strong data-translate="hours_label">Hours:</strong><br>
+                    <strong data-translate="hours_text" style="color: #ff6b35;">Every Day Open: 10am - 10pm</strong>
+                </p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <p >&copy; 2024 Events Studio. All rights reserved. Crafted with love and artistry.</p>
+                <div class="developer-credit">
+                    <a href="https://www.instagram.com/sallimmustafaaa?igsh=ODJvbXdrNThlZThv" target="_blank" class="developer-link">
+                        <span class="developer-text"><span >Developed by</span> <strong>SalimMustefa</strong></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ===== SCRIPTS ===== -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+    
+    <!-- Hamburger Menu Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbarToggler = document.querySelector('.navbar-toggler');
+            const navbarCollapse = document.querySelector('#navbarNav');
+            
+            if (navbarToggler && navbarCollapse) {
+                navbarToggler.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                });
+                
+                navbarCollapse.addEventListener('hidden.bs.collapse', function() {
+                    navbarToggler.classList.remove('active');
+                });
+                
+                navbarCollapse.addEventListener('shown.bs.collapse', function() {
+                    navbarToggler.classList.add('active');
+                });
+            }
+        });
+    </script>
+    
+    <!-- Custom script to ensure navbar stays fixed -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbar = document.getElementById('navbar');
+            if (navbar) {
+                // Force navbar to stay fixed
+                navbar.style.position = 'fixed';
+                navbar.style.top = '0';
+                navbar.style.left = '0';
+                navbar.style.right = '0';
+                navbar.style.zIndex = '9999';
+                navbar.style.transform = 'translateY(0)';
+                navbar.style.opacity = '1';
+                navbar.style.visibility = 'visible';
+                
+                // Override any scroll-based hiding
+                window.addEventListener('scroll', function() {
+                    navbar.style.position = 'fixed';
+                    navbar.style.top = '0';
+                    navbar.style.transform = 'translateY(0)';
+                    navbar.style.opacity = '1';
+                    navbar.style.visibility = 'visible';
+                });
+                
+                // Ensure navbar is visible on page load
+                setTimeout(function() {
+                    navbar.style.position = 'fixed';
+                    navbar.style.top = '0';
+                    navbar.style.transform = 'translateY(0)';
+                    navbar.style.opacity = '1';
+                    navbar.style.visibility = 'visible';
+                }, 100);
+            }
+        });
+    </script>
+</body>
+</html>
+

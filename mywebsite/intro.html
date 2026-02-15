@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events Studio | Luxury Wedding Photography</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Events Studio" />
+    <link rel="manifest" href="assets/favicon/site.webmanifest" />
+    
+    <!-- Translation System -->
+    <script src="js/translations.js"></script>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Hamburger Menu CSS -->
+    <link rel="stylesheet" href="css/hamburger-menu.css">
+        
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #2a1515 50%, #0a0a0a 100%);
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        /* Video Background */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .video-background video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+        
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2;
+        }
+        
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.3;
+        }
+        
+        .particle {
+            position: absolute;
+            background: linear-gradient(45deg, #ffffff, #cccccc);
+            border-radius: 50%;
+            animation: float 12s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+        
+        /* Main Container */
+        .intro-container {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+        
+        /* Logo Container */
+        .logo-container {
+            margin-bottom: 2rem;
+            position: relative;
+            animation: fadeInScale 1.5s ease-out;
+        }
+        
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .logo-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        /* Title Animation */
+        .title-container {
+            margin-bottom: 3rem;
+        }
+        
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(4rem, 10vw, 8rem);
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            position: relative;
+            animation: titleFadeIn 2s ease-out 0.5s both;
+            text-shadow: 0 0 40px rgba(255, 107, 53, 0.8);
+        }
+        
+        @keyframes titleFadeIn {
+            from { opacity: 0; transform: translateY(50px) scale(0.8); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        
+        .subtitle {
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            color: #ff6b35;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            animation: subtitleFadeIn 2s ease-out 1s both;
+        }
+        
+        @keyframes subtitleFadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Dynamic Text */
+        .dynamic-text {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            color: #ffffff;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            animation: textFadeIn 2s ease-out 1.5s both;
+        }
+        
+        @keyframes textFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .text-item {
+            position: absolute;
+            opacity: 0;
+            animation: textCycle 9s infinite;
+        }
+        
+        .text-item:nth-child(1) { animation-delay: 0s; }
+        .text-item:nth-child(2) { animation-delay: 3s; }
+        .text-item:nth-child(3) { animation-delay: 6s; }
+        
+        @keyframes textCycle {
+            0%, 33.33% { opacity: 1; transform: translateY(0); }
+            33.34%, 100% { opacity: 0; transform: translateY(-20px); }
+        }
+        
+        /* Enter Button */
+        .enter-btn {
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+            color: white;
+            border: none;
+            padding: 1.5rem 4rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            animation: buttonFadeIn 2s ease-out 2s both;
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.4);
+            transition: all 0.4s ease;
+        }
+        
+        @keyframes buttonFadeIn {
+            from { opacity: 0; transform: translateY(40px) scale(0.8); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        
+        .enter-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(255, 107, 53, 0.6);
+        }
+        
+        .enter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.6s;
+        }
+        
+        .enter-btn:hover::before {
+            left: 100%;
+        }
+        
+        /* Loading Animation */
+        .loading-dots {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 2rem;
+            animation: dotsFadeIn 2s ease-out 2.5s both;
+        }
+        
+        @keyframes dotsFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .dot {
+            width: 15px;
+            height: 15px;
+            background: #ff6b35;
+            border-radius: 50%;
+            animation: dotPulse 2s infinite ease-in-out;
+        }
+        
+        .dot:nth-child(2) { animation-delay: 0.3s; }
+        .dot:nth-child(3) { animation-delay: 0.6s; }
+        
+        @keyframes dotPulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.5); opacity: 1; }
+        }
+        
+        /* Fade Out Animation */
+        .fade-out {
+            animation: fadeOut 1.5s ease-out forwards;
+        }
+        
+        @keyframes fadeOut {
+            from { opacity: 1; transform: scale(1); }
+            to { opacity: 0; transform: scale(0.9); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo-circle {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .logo-img {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .enter-btn {
+                padding: 1.2rem 3rem;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body data-page-title="luxury_wedding">
+
+    <!-- Video Background -->
+    <div class="video-background">
+        <video autoplay muted loop playsinline>
+            <source src="assets/videos/videobg2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="video-overlay"></div>
+
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+        <source src="assets/Song-bg.mp3" type="audio/mpeg">
+        <source src="Song-bg.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <script>
+        // Continuous background music across pages
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('bgMusic');
+            const savedTime = sessionStorage.getItem('musicTime');
+            const wasPlaying = sessionStorage.getItem('musicPlaying');
+            
+            // Set volume to 0.3%
+            audio.volume = 0.003;
+            
+            // Restore playback position and state
+            if (savedTime) {
+                audio.currentTime = parseFloat(savedTime);
+            }
+            
+            // Auto-play if it was playing before OR if first visit
+            if (wasPlaying === 'true' || !wasPlaying) {
+                // Try to play music (may be blocked by browser)
+                const playPromise = audio.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(e => {
+                        console.log('Autoplay prevented - will start on user interaction');
+                        // Add click listener to start music on first interaction
+                        document.addEventListener('click', function startMusic() {
+                            audio.play();
+                            document.removeEventListener('click', startMusic);
+                        }, { once: true });
+                    });
+                }
+            }
+            
+            // Save current time and playing state periodically
+            setInterval(() => {
+                if (!audio.paused) {
+                    sessionStorage.setItem('musicTime', audio.currentTime.toString());
+                    sessionStorage.setItem('musicPlaying', 'true');
+                } else {
+                    sessionStorage.setItem('musicPlaying', 'false');
+                }
+            }, 1000);
+            
+            // Save state when page is unloading
+            window.addEventListener('beforeunload', function() {
+                sessionStorage.setItem('musicTime', audio.currentTime.toString());
+                sessionStorage.setItem('musicPlaying', !audio.paused ? 'true' : 'false');
+            });
+        });
+    </script>
+
+    <!-- Navigation Menu -->
+ 
+    
+    <!-- Animated Background -->
+    <div class="bg-animation" id="bgAnimation"></div>
+    
+    <!-- Main Content -->
+    <div class="intro-container">
+        <!-- Logo -->
+        <div class="logo-container">
+            <img src="assets/favicon/web-app-manifest-512x512.png" alt="Events Studio Logo" class="logo-img">
+        </div>
+        
+        <!-- Title -->
+        <div class="title-container">
+            <h1 class="main-title">Events Studio</h1>
+            <p class="subtitle" style="font-size: small;" data-translate="luxury_wedding">Luxury Wedding Photography & Cinematography</p>
+        </div>
+        
+            
+        
+        
+      
+        <!-- Enter Button -->
+        <button class="enter-btn" onclick="enterSite()" data-translate="enter_experience">
+            <i class="fas fa-camera"></i> Enter Experience
+        </button>
+        
+        <!-- Loading Dots -->
+        <div class="loading-dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+    
+    <!-- Enter Site Function -->
+    <script>
+        function enterSite() {
+            const btn = document.querySelector('.enter-btn');
+            const container = document.querySelector('.intro-container');
+            
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ' + translationManager.t('loading');
+            btn.disabled = true;
+            
+            // Add fade out animation to entire container
+            container.classList.add('fade-out');
+            
+            // Set session storage so intro doesn't show again
+            sessionStorage.setItem('introSeen', 'true');
+            
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 1500);
+        }
+        
+        // Auto-enter after 8 seconds
+        setTimeout(() => {
+            const btn = document.querySelector('.enter-btn');
+            if (!btn.disabled) {
+                enterSite();
+            }
+        }, 8000);
+        
+        // Keyboard support
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                const btn = document.querySelector('.enter-btn');
+                if (!btn.disabled) {
+                    enterSite();
+                }
+            }
+        });
+    </script>
+    
+    <!-- Vue.js for Advanced Animations -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+    
+    <div id="react-component"></div>
+    
+    <script type="text/babel">
+        // React Component for Advanced Effects
+        const { useState, useEffect } = React;
+        
+        function AnimatedEffects() {
+            const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+            
+            useEffect(() => {
+                const handleMouseMove = (e) => {
+                    setMousePosition({
+                        x: e.clientX,
+                        y: e.clientY
+                    });
+                };
+                
+                window.addEventListener('mousemove', handleMouseMove);
+                
+                return () => {
+                    window.removeEventListener('mousemove', handleMouseMove);
+                };
+            }, []);
+            
+            return (
+                <div style={{
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    pointerEvents: 'none',
+                    zIndex: 5,
+                    background: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255, 107, 53, 0.1) 0%, transparent 50%)`
+                }} />
+            );
+        }
+        
+        ReactDOM.render(React.createElement(AnimatedEffects), document.getElementById('react-component'));
+    </script>
+    
+    <script>
+        // Vue.js for dynamic particle system
+        const { createApp } = Vue;
+        
+        createApp({
+            data() {
+                return {
+                    particles: []
+                };
+            },
+            mounted() {
+                this.createParticles();
+                this.animateTitle();
+            },
+            methods: {
+                createParticles() {
+                    const bgAnimation = document.getElementById('bgAnimation');
+                    for (let i = 0; i < 20; i++) {
+                        setTimeout(() => {
+                            const particle = document.createElement('div');
+                            particle.className = 'particle';
+                            particle.style.width = Math.random() * 20 + 10 + 'px';
+                            particle.style.height = particle.style.width;
+                            particle.style.left = Math.random() * 100 + '%';
+                            particle.style.animationDelay = Math.random() * 8 + 's';
+                            particle.style.animationDuration = (Math.random() * 5 + 8) + 's';
+                            bgAnimation.appendChild(particle);
+                        }, i * 100);
+                    }
+                },
+                animateTitle() {
+                    const title = document.querySelector('.main-title');
+                    if (title) {
+                        title.style.animation = 'fadeInUp 1s ease-out';
+                    }
+                }
+            }
+        }).mount('#bgAnimation');
+    </script>
+</body>
+</html>
+                setTimeout(() => {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    
+                    // Random size
+                    const size = Math.random() * 25 + 10;
+                    particle.style.width = size + 'px';
+                    particle.style.height = size + 'px';
+                    
+                    // Random position
+                    particle.style.left = Math.random() * 100 + '%';
+                    
+                    // Random animation delay and duration
+                    particle.style.animationDelay = Math.random() * 12 + 's';
+                    particle.style.animationDuration = (Math.random() * 8 + 12) + 's';
+                    
+                    // Random opacity
+                    particle.style.opacity = Math.random() * 0.5 + 0.2;
+                    
+                    bgAnimation.appendChild(particle);
+                }, i * 150);
+            }
+        }
+        
+        // Initialize enhanced particles
+        createEnhancedParticles();
+        
+        // Add keyboard support
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                const btn = document.querySelector('.enter-btn');
+                if (!btn.disabled) {
+                    enterSite();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+

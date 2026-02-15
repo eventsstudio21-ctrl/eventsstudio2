@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Events Studio - Luxury wedding cinematography and films. Professional video services for your special day.">
+    <meta name="theme-color" content="#0a0a0a">
+    <title>Films | Events Studio - Wedding Cinematography</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Events Studio" />
+    <link rel="manifest" href="assets/favicon/site.webmanifest" />
+    
+    <!-- External Resources -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Translation System -->
+    <script src="js/translations.js"></script>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/bootstrap-custom.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/portfolio.css">
+    <link rel="stylesheet" href="css/footer.css">
+        
+    <!-- Dynamic Navigation Styles -->
+    <style>
+        /* Dynamic Navigation Button Styles */
+        .nav-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: #ffffff;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(255, 140, 66, 0.1));
+            border: 2px solid rgba(255, 107, 53, 0.3);
+            border-radius: 50px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            backdrop-filter: blur(10px);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            min-width: 160px;
+            z-index: 1;
+        }
+        
+        .nav-btn-text {
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+            border-radius: 50px;
+            transform: translateX(-100%);
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 0;
+        }
+        
+        .nav-btn-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 3;
+        }
+        
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.6s ease;
+            z-index: 1;
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            border-color: #ff6b35;
+            box-shadow: 0 15px 35px rgba(255, 107, 53, 0.4);
+            color: #000000;
+        }
+        
+        .nav-btn:hover .nav-btn-bg {
+            transform: translateX(0);
+        }
+        
+        .nav-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .nav-btn:hover .nav-btn-text {
+            transform: scale(1.1);
+            font-weight: 700;
+        }
+        
+        .nav-btn:active {
+            transform: translateY(-1px) scale(1.02);
+            transition: all 0.1s ease;
+        }
+        
+        /* Particle effects */
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(0) translateX(0) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                transform: translateY(-100px) translateX(var(--x-offset)) scale(0);
+                opacity: 0;
+            }
+        }
+        
+        .nav-btn:hover .nav-btn-particles::before,
+        .nav-btn:hover .nav-btn-particles::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ffffff;
+            border-radius: 50%;
+            animation: particleFloat 1s ease-out infinite;
+        }
+        
+        .nav-btn:hover .nav-btn-particles::before {
+            top: 50%;
+            left: 20%;
+            --x-offset: -20px;
+            animation-delay: 0s;
+        }
+        
+        .nav-btn:hover .nav-btn-particles::after {
+            top: 50%;
+            right: 20%;
+            --x-offset: 20px;
+            animation-delay: 0.3s;
+        }
+        
+        /* Glow effect */
+        .nav-btn::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff6b35, #ff8c42, #ffa500, #ff6b35);
+            border-radius: 50px;
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.3s ease;
+            background-size: 300% 300%;
+            animation: gradientShift 3s ease infinite;
+        }
+        
+        .nav-btn:hover::after {
+            opacity: 0.6;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Navbar link animations */
+        .navbar-nav .nav-link {
+            position: relative;
+            padding: 10px 15px;
+            color: rgba(255, 255, 255, 0.8) !important;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .navbar-nav .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #ff6b35, #ff8c42);
+            transform: translateX(-50%);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .navbar-nav .nav-link:hover {
+            color: #ff6b35 !important;
+            transform: translateY(-2px);
+        }
+        
+        .navbar-nav .nav-link:hover::before {
+            width: 80%;
+        }
+        
+        .navbar-nav .nav-link.active {
+            color: #ff6b35 !important;
+        }
+        
+        .navbar-nav .nav-link.active::before {
+            width: 80%;
+        }
+        
+        /* Prevent text wrapping in navigation links */
+        .navbar-nav .nav-link {
+            white-space: nowrap !important;
+        }
+        
+        /* Hamburger Menu Styles */
+        .hamburger-modern {
+            width: 35px;
+            height: 30px;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger-modern:hover {
+            transform: scale(1.05);
+        }
+        
+        .line {
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #ff6b35, #ff8c42);
+            border-radius: 2px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .line::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .hamburger-modern:hover .line::after {
+            left: 100%;
+        }
+        
+        .line1 {
+            transform-origin: center;
+            animation: pulse1 2s infinite ease-in-out;
+        }
+        
+        .line2 {
+            transform-origin: center;
+            animation: pulse2 2s infinite ease-in-out 0.3s;
+        }
+        
+        .line3 {
+            transform-origin: center;
+            animation: pulse3 2s infinite ease-in-out 0.6s;
+        }
+        
+        @keyframes pulse1 {
+            0%, 100% { transform: scaleX(1); }
+            50% { transform: scaleX(0.85); }
+        }
+        
+        @keyframes pulse2 {
+            0%, 100% { transform: scaleX(1); }
+            50% { transform: scaleX(0.7); }
+        }
+        
+        @keyframes pulse3 {
+            0%, 100% { transform: scaleX(1); }
+            50% { transform: scaleX(0.85); }
+        }
+        
+        /* Active state - transforms to X */
+        .navbar-toggler.active .hamburger-modern {
+            transform: rotate(90deg);
+        }
+        
+        .navbar-toggler.active .line1 {
+            transform: rotate(45deg) translate(6px, 6px);
+            animation: none;
+            background: #ff8c42;
+        }
+        
+        .navbar-toggler.active .line2 {
+            opacity: 0;
+            transform: scaleX(0);
+            animation: none;
+        }
+        
+        .navbar-toggler.active .line3 {
+            transform: rotate(-45deg) translate(6px, -6px);
+            animation: none;
+            background: #ff8c42;
+        }
+        
+        .navbar-toggler.active .line::after {
+            display: none;
+        }
+        
+        /* Remove default styles */
+        .navbar-toggler {
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+            background: transparent !important;
+            padding: 8px !important;
+        }
+        
+        .navbar-toggler:focus {
+            box-shadow: none !important;
+            outline: none !important;
+        }
+        
+        /* Glow effect */
+        .hamburger-modern::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 8px;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.2) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .hamburger-modern:hover::before {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body data-page-title="nav_films">
+
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+        <source src="assets/Song-bg.mp3" type="audio/mpeg">
+        <source src="Song-bg.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <script>
+        // Continuous background music across pages
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('bgMusic');
+            const savedTime = sessionStorage.getItem('musicTime');
+            const wasPlaying = sessionStorage.getItem('musicPlaying');
+            
+            // Set volume to 0.3%
+            audio.volume = 0.003;
+            
+            // Restore playback position and state
+            if (savedTime) {
+                audio.currentTime = parseFloat(savedTime);
+            }
+            
+            // Auto-play if it was playing before OR if first visit
+            if (wasPlaying === 'true' || !wasPlaying) {
+                // Try to play music (may be blocked by browser)
+                const playPromise = audio.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(e => {
+                        console.log('Autoplay prevented - will start on user interaction');
+                        // Add click listener to start music on first interaction
+                        document.addEventListener('click', function startMusic() {
+                            audio.play();
+                            document.removeEventListener('click', startMusic);
+                        }, { once: true });
+                    });
+                }
+            }
+            
+            // Save current time and playing state periodically
+            setInterval(() => {
+                if (!audio.paused) {
+                    sessionStorage.setItem('musicTime', audio.currentTime.toString());
+                    sessionStorage.setItem('musicPlaying', 'true');
+                } else {
+                    sessionStorage.setItem('musicPlaying', 'false');
+                }
+            }, 1000);
+            
+            // Save state when page is unloading
+            window.addEventListener('beforeunload', function() {
+                sessionStorage.setItem('musicTime', audio.currentTime.toString());
+                sessionStorage.setItem('musicPlaying', !audio.paused ? 'true' : 'false');
+            });
+        });
+    </script>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a href="index.html" class="navbar-brand d-flex align-items-center gap-3">
+                <div>Events <span>Studio</span></div>
+                <img src="assets/favicon/favicon-96x96.png" alt="Events Studio Logo" height="60" loading="lazy" decoding="async">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger-modern">
+                    <div class="line line1"></div>
+                    <div class="line line2"></div>
+                    <div class="line line3"></div>
+                </div>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html" data-translate="nav_home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="galleries.html" data-translate="nav_galleries">Galleries</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="films.html" data-translate="nav_films">Films</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="packages.html" data-translate="nav_packages">Our Packages</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="team.html" data-translate="nav_team">Team</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html" data-translate="nav_contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ===== SERVICES SECTION ===== -->
+    <section id="services">
+        <div class="container">
+            <div class="section-header text-center">
+                <p class="section-subtitle" data-translate="what_we_offer">What We Offer</p>
+                <h1 data-translate="films_title">Films</h1>
+                <div class="section-divider mx-auto"></div>
+                <div class="team-logo">
+                    <img src="assets/favicon/web-app-manifest-512x512.png"  alt="Events Studio Logo" class="team-logo-img">
+                </div>
+                <p class="section-description" data-translate="cinematic_stories">Cinematic stories that capture your emotions</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== VIDEO SECTION ===== -->
+    <section id="video-showcase" class="alternate-bg">
+        <div class="container">
+            <div class="section-header text-center">
+                <p class="section-subtitle" data-translate="featured_films">Featured Films</p>
+                <h1 data-translate="our_cinematic_stories">Our Cinematic Stories</h1>
+                <div class="section-divider mx-auto"></div>
+                <p class="section-description" data-translate="films_description">
+                    Experience the magic of wedding cinematography through our carefully crafted films. 
+                    Each story is unique, just like your love story.
+                </p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-6 col-md-12 mb-4">
+                    <div class="video-container">
+                        <video class="featured-video" autoplay muted loop playsinline id="video1">
+                            <source src="assets/videos/video1234.webm" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="video-overlay">
+                            <div class="video-content">
+                                <h3 class="video-title" data-translate="valentine_story">Valentine's Day Love Story</h3>
+                                <p class="video-description" data-translate="valentine_desc">Celebrating romance and eternal love</p>
+                                <div class="video-play-icon" onclick="openFullscreen('video1')">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 mb-4">
+                    <div class="video-container">
+                        <video class="featured-video" autoplay muted loop playsinline id="video2">
+                            <source src="assets/videos/IMG_5192.MP4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="video-overlay">
+                            <div class="video-content">
+                                <h3 class="video-title" data-translate="wedding_highlights">Wedding Highlights</h3>
+                                <p class="video-description" data-translate="wedding_desc">Capturing every precious moment</p>
+                                <div class="video-play-icon" onclick="openFullscreen('video2')">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 mb-4">
+                    <div class="video-container">
+                        <video class="featured-video" autoplay muted loop playsinline id="video3">
+                            <source src="assets/videos/video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="video-overlay">
+                            <div class="video-content">
+                                <h3 class="video-title" data-translate="cinematic_story">Cinematic Story</h3>
+                                <p class="video-description" data-translate="cinematic_desc">Creating memories that last forever</p>
+                                <div class="video-play-icon" onclick="openFullscreen('video3')">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 mb-4">
+                    <div class="video-container">
+                        <video class="featured-video" autoplay muted loop playsinline id="video4">
+                            <source src="assets/videos/video09.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="video-overlay">
+                            <div class="video-content">
+                                <h3 class="video-title" data-translate="cinematic_excellence">Cinematic Excellence</h3>
+                                <p class="video-description" data-translate="excellence_desc">Professional wedding storytelling with artistic vision</p>
+                                <div class="video-play-icon" onclick="openFullscreen('video4')">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 mb-4">
+                    <div class="video-container">
+                        <video class="featured-video" autoplay muted loop playsinline id="video5">
+                            <source src="assets/videos/vd1.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="video-overlay">
+                            <div class="video-content">
+                                <h3 class="video-title" data-translate="henna_celebration">Henna Day Celebration</h3>
+                                <p class="video-description" data-translate="henna_desc">Traditional henna ceremony and joyful moments</p>
+                                <div class="video-play-icon" onclick="openFullscreen('video5')">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.5rem;">
+                    <img src="assets/favicon/favicon-96x96.png" alt="Events Studio Logo" class="developer-photo" style="width: 60px; height: 60px; border-radius: 50%; border: 3px solid #ff6b35; padding: 5px; background: rgba(255, 107, 53, 0.1);">
+                    <span style="color: #ff6b35; font-weight: 600; font-size: 1.1rem;">Events Studio</span>
+                </div>
+                <p data-translate="footer_description" style="color: var(--color-text-muted); font-size: 0.8rem; margin-bottom: 0.8rem; line-height: 1.3;">Luxury wedding photography & cinematography. Crafting timeless stories since 2025.</p>
+                <div class="social-links" style="margin-top: 0.8rem; display: flex; justify-content: center; gap: 0.8rem;">
+                    <a href="https://www.instagram.com/events.studi0?igsh=MTRwaDYyYjhjM21haQ==" target="_blank"  title="Instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@events.studi0?_r=1&_t=ZS-93ZK33YRGg1" target="_blank"  title="TikTok" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://snapchat.com/t/erS92aZh" target="_blank"  title="Snapchat" aria-label="Snapchat"><i class="fab fa-snapchat"></i></a>
+                    <a href="https://wa.me/9647510579521" target="_blank"  title="WhatsApp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4 data-translate="quick_links">Quick Links</h4>
+                <ul>
+                    <li><a href="index.html" data-translate="nav_home">Home</a></li>
+                    <li><a href="galleries-new.html" data-translate="nav_galleries">Galleries</a></li>
+                    <li><a href="films.html" data-translate="nav_films">Films</a></li>
+                    <li><a href="packages.html" data-translate="nav_packages">Our Packages</a></li>
+                    <li><a href="team.html" data-translate="nav_team">Team</a></li>
+                    <li><a href="contact.html" data-translate="nav_contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4 data-translate="services">Services</h4>
+                <ul>
+                    <li><a href="#" data-translate="photography">Photography</a></li>
+                    <li><a href="#" data-translate="cinematography">Cinematography</a></li>
+                    <li><a href="#" data-translate="highlight_reels">Highlight Reels</a></li>
+                    <li><a href="#" data-translate="post_production">Post-Production</a></li>
+                    <li><a href="#" data-translate="albums_prints">Albums & Prints</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4 data-translate="contact_info">Contact</h4>
+                <p style="color: var(--color-text-muted); font-size: 0.9rem; line-height: 1.8;">
+                    <strong data-translate="email_label">Email:</strong><br>
+                    <a href="mailto:eventsstudio21@gmail.com">eventsstudio21@gmail.com</a><br><br>
+                    <strong data-translate="phone_label">Phone:</strong><br>
+                    <a href="tel:+9647504145732">+964 750 414 5732</a><br><br>
+                    <strong data-translate="whatsapp_label">WhatsApp:</strong><br>
+                    <a href="https://wa.me/9647510579521">+964 751 057 9521</a><br><br>
+                    <strong data-translate="location_label">Location:</strong><br>
+                    <div style="background: rgba(255, 107, 53, 0.1); border: 1px solid rgba(255, 107, 53, 0.3); border-radius: 8px; padding: 0.8rem; margin-top: 0.5rem;">
+                        <a href="https://maps.google.com/maps?q=37.145811,42.660593&ll=37.145811,42.660593&z=16" target="_blank" style="color: #ff6b35; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span data-translate="location_text">Zakho - Duhok - Erbil 📍</span>
+                        </a>
+                    </div>
+                    <br><br>
+                    <strong data-translate="hours_label">Hours:</strong><br>
+                    <strong data-translate="hours_text" style="color: #ff6b35;">Every Day Open: 10am - 10pm</strong>
+                </p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <p >&copy; 2024 Events Studio. All rights reserved. Crafted with love and artistry.</p>
+                <div class="developer-credit">
+                    <a href="https://www.instagram.com/sallimmustafaaa?igsh=ODJvbXdrNThlZThv" target="_blank" class="developer-link">
+                        <span class="developer-text"><span >Developed by</span> <strong>SalimMustefa</strong></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ===== SCRIPTS ===== -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+    
+    <script>
+        // Dynamic hamburger animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbarToggler = document.querySelector('.navbar-toggler');
+            const navbarCollapse = document.querySelector('.navbarCollapse');
+            const hamburger = document.querySelector('.hamburger');
+            const spans = document.querySelectorAll('.hamburger span');
+            
+            if (navbarToggler && navbarCollapse) {
+                // Add ripple effect on click
+                navbarToggler.addEventListener('click', function(e) {
+                    this.classList.toggle('active');
+                    
+                    // Create ripple effect
+                    const ripple = document.createElement('div');
+                    ripple.style.position = 'absolute';
+                    ripple.style.width = '20px';
+                    ripple.style.height = '20px';
+                    ripple.style.background = 'rgba(255, 107, 53, 0.5)';
+                    ripple.style.borderRadius = '50%';
+                    ripple.style.transform = 'translate(-50%, -50%)';
+                    ripple.style.pointerEvents = 'none';
+                    ripple.style.animation = 'rippleEffect 0.6s ease-out';
+                    
+                    const rect = this.getBoundingClientRect();
+                    ripple.style.left = (e.clientX - rect.left) + 'px';
+                    ripple.style.top = (e.clientY - rect.top) + 'px';
+                    
+                    this.appendChild(ripple);
+                    
+                });
+                
+                navbarCollapse.addEventListener('hidden.bs.collapse', function() {
+                    navbarToggler.classList.remove('active');
+                });
+                
+                navbarCollapse.addEventListener('shown.bs.collapse', function() {
+                    navbarToggler.classList.add('active');
+                });
+            }
+        });
+    </script>
+    
+    <script>
+        function openFullscreen(videoId) {
+            const video = document.getElementById(videoId);
+            
+            // Play the video with sound
+            video.muted = false;
+            video.play().then(() => {
+                // Request fullscreen after video starts playing
+                if (video.requestFullscreen) {
+                    video.requestFullscreen();
+                } else if (video.webkitRequestFullscreen) {
+                    video.webkitRequestFullscreen();
+                } else if (video.msRequestFullscreen) {
+                    video.msRequestFullscreen();
+                }
+            }).catch(error => {
+                console.log('Video play failed:', error);
+                // Still try to open fullscreen even if play fails
+                if (video.requestFullscreen) {
+                    video.requestFullscreen();
+                } else if (video.webkitRequestFullscreen) {
+                    video.webkitRequestFullscreen();
+                } else if (video.msRequestFullscreen) {
+                    video.msRequestFullscreen();
+                }
+            });
+        }
+        
+        // Add click event listeners to video containers for better UX
+        document.addEventListener('DOMContentLoaded', function() {
+            const videoContainers = document.querySelectorAll('.video-container');
+            
+            videoContainers.forEach(container => {
+                const video = container.querySelector('video');
+                const playIcon = container.querySelector('.video-play-icon');
+                
+                // Add click listener to the entire video container
+                container.addEventListener('click', function(e) {
+                    // Prevent triggering if clicking on the play icon (it has its own handler)
+                    if (!e.target.closest('.video-play-icon')) {
+                        const videoId = video.id;
+                        openFullscreen(videoId);
+                    }
+                });
+                
+                // Add hover effect to show play icon
+                container.addEventListener('mouseenter', function() {
+                    if (playIcon) {
+                        playIcon.style.opacity = '1';
+                        playIcon.style.transform = 'scale(1.1)';
+                    }
+                });
+                
+                container.addEventListener('mouseleave', function() {
+                    if (playIcon) {
+                        playIcon.style.opacity = '0.8';
+                        playIcon.style.transform = 'scale(1)';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+

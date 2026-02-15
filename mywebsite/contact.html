@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Events Studio - Contact us for luxury wedding photography and cinematography. Get in touch for your special day.">
+    <meta name="theme-color" content="#0a0a0a">
+    <title>Contact | Events Studio - Wedding Photography Contact</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Events Studio" />
+    <link rel="manifest" href="assets/favicon/site.webmanifest" />
+    
+    <!-- External Resources -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Translation System -->
+    <script src="js/translations.js"></script>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/bootstrap-custom.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/portfolio.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="css/hamburger-menu.css">
+        
+    <!-- Modern Contact Form Styles -->
+    <style>
+        /* Modern Contact Form */
+        .contact-form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .contact-form {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            border: 2px solid rgba(255, 107, 53, 0.2);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.1), transparent);
+            transition: left 1s ease;
+        }
+        
+        .contact-form:hover::before {
+            left: 100%;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            color: #ff6b35;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 107, 53, 0.3);
+            border-radius: 10px;
+            color: #ffffff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* Dynamic Navigation Button Styles */
+        .nav-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: #ffffff;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(255, 140, 66, 0.1));
+            border: 2px solid rgba(255, 107, 53, 0.3);
+            border-radius: 50px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            backdrop-filter: blur(10px);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            min-width: 160px;
+            z-index: 1;
+        }
+        
+        .nav-btn-text {
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+            border-radius: 50px;
+            transform: translateX(-100%);
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 0;
+        }
+        
+        .nav-btn-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 3;
+        }
+        
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.6s ease;
+            z-index: 1;
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            border-color: #ff6b35;
+            box-shadow: 0 15px 35px rgba(255, 107, 53, 0.4);
+            color: #000000;
+        }
+        
+        .nav-btn:hover .nav-btn-bg {
+            transform: translateX(0);
+        }
+        
+        .nav-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .nav-btn:hover .nav-btn-text {
+            transform: scale(1.1);
+            font-weight: 700;
+        }
+        
+        .nav-btn:active {
+            transform: translateY(-1px) scale(1.02);
+            transition: all 0.1s ease;
+        }
+        
+        /* Particle effects */
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(0) translateX(0) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                transform: translateY(-100px) translateX(var(--x-offset)) scale(0);
+                opacity: 0;
+            }
+        }
+        
+        .nav-btn:hover .nav-btn-particles::before,
+        .nav-btn:hover .nav-btn-particles::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ffffff;
+            border-radius: 50%;
+            animation: particleFloat 1s ease-out infinite;
+        }
+        
+        .nav-btn:hover .nav-btn-particles::before {
+            top: 50%;
+            left: 20%;
+            --x-offset: -20px;
+            animation-delay: 0s;
+        }
+        
+        .nav-btn:hover .nav-btn-particles::after {
+            top: 50%;
+            right: 20%;
+            --x-offset: 20px;
+            animation-delay: 0.3s;
+        }
+        
+        /* Glow effect */
+        .nav-btn::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff6b35, #ff8c42, #ffa500, #ff6b35);
+            border-radius: 50px;
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.3s ease;
+            background-size: 300% 300%;
+            animation: gradientShift 3s ease infinite;
+        }
+        
+        .nav-btn:hover::after {
+            opacity: 0.6;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Navbar link animations */
+        .navbar-nav .nav-link {
+            position: relative;
+            padding: 10px 15px;
+            color: rgba(255, 255, 255, 0.8) !important;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .navbar-nav .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #ff6b35, #ff8c42);
+            transform: translateX(-50%);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .navbar-nav .nav-link:hover {
+            color: #ff6b35 !important;
+            transform: translateY(-2px);
+        }
+        
+        .navbar-nav .nav-link:hover::before {
+            width: 80%;
+        }
+        
+        .navbar-nav .nav-link.active {
+            color: #ff6b35 !important;
+        }
+        
+        .navbar-nav .nav-link.active::before {
+            width: 80%;
+        }
+        
+        /* Hide hamburger menu on laptop/desktop, show only on mobile */
+        @media (min-width: 768px) {
+            .navbar-toggler {
+                display: none !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+                width: 0 !important;
+                height: 0 !important;
+                overflow: hidden !important;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .navbar-toggler {
+                display: flex !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                width: auto !important;
+                height: auto !important;
+                overflow: visible !important;
+            }
+        }
+        
+        .package-select {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%) !important;
+            border: 2px solid rgba(255, 107, 53, 0.4) !important;
+            color: #ff6b35 !important;
+            cursor: pointer;
+        }
+        
+        .package-select option {
+            background: #1a1a1a !important;
+            color: #ffffff !important;
+            padding: 0.5rem;
+        }
+        
+        .package-select:focus {
+            border-color: #ff6b35 !important;
+            background: linear-gradient(135deg, #2a1515 0%, #3a1a1a 100%) !important;
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.3) !important;
+            transform: translateY(-2px);
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ff6b35;
+            background: rgba(255, 107, 53, 0.1);
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .form-submit {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .btn-submit {
+            background: linear-gradient(45deg, #ff6b35, #ff8c42);
+            color: #000000;
+            border: none;
+            padding: 1.2rem 3rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+        }
+        
+        .btn-submit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .btn-submit:hover::before {
+            left: 100%;
+        }
+        
+        .btn-submit:hover {
+            background: linear-gradient(45deg, #ff8c42, #ffa500);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.5);
+        }
+        
+        /* Contact Info Cards */
+        .contact-info-section {
+            margin-top: 4rem;
+        }
+        
+        .contact-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-info-card {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            border: 2px solid rgba(255, 107, 53, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.1), transparent);
+            transition: left 1s ease;
+        }
+        
+        .contact-info-card:hover::before {
+            left: 100%;
+        }
+        
+        .contact-info-card:hover {
+            transform: translateY(-5px);
+            border-color: #ff6b35;
+            box-shadow: 0 15px 30px rgba(255, 107, 53, 0.3);
+        }
+        
+        .contact-info-icon {
+            font-size: 2.5rem;
+            color: #ff6b35;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info-title {
+            color: #ff6b35;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-info-text {
+            color: #ffffff;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .contact-info-text a {
+            color: #ff8c42;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-info-text a:hover {
+            color: #ffa500;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .contact-form {
+                padding: 2rem 1.5rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .contact-info-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body data-page-title="contact_us">
+
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+        <source src="assets/Song-bg.mp3" type="audio/mpeg">
+        <source src="Song-bg.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <script>
+        // Continuous background music across pages
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('bgMusic');
+            const savedTime = sessionStorage.getItem('musicTime');
+            const wasPlaying = sessionStorage.getItem('musicPlaying');
+            
+            // Set volume to 0.3%
+            audio.volume = 0.003;
+            
+            // Restore playback position and state
+            if (savedTime) {
+                audio.currentTime = parseFloat(savedTime);
+            }
+            
+            // Auto-play if it was playing before OR if first visit
+            if (wasPlaying === 'true' || !wasPlaying) {
+                // Try to play music (may be blocked by browser)
+                const playPromise = audio.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(e => {
+                        console.log('Autoplay prevented - will start on user interaction');
+                        // Add click listener to start music on first interaction
+                        document.addEventListener('click', function startMusic() {
+                            audio.play();
+                            document.removeEventListener('click', startMusic);
+                        }, { once: true });
+                    });
+                }
+            }
+            
+            // Save current time and playing state periodically
+            setInterval(() => {
+                if (!audio.paused) {
+                    sessionStorage.setItem('musicTime', audio.currentTime.toString());
+                    sessionStorage.setItem('musicPlaying', 'true');
+                } else {
+                    sessionStorage.setItem('musicPlaying', 'false');
+                }
+            }, 1000);
+            
+            // Save state when page is unloading
+            window.addEventListener('beforeunload', function() {
+                sessionStorage.setItem('musicTime', audio.currentTime.toString());
+                sessionStorage.setItem('musicPlaying', !audio.paused ? 'true' : 'false');
+            });
+        });
+    </script>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a href="index.html" class="navbar-brand d-flex align-items-center gap-3">
+                <div>Events <span>Studio</span></div>
+                <img src="assets/favicon/favicon-96x96.png" alt="Events Studio Logo" height="60" loading="lazy" decoding="async">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger-modern">
+                    <div class="line line1"></div>
+                    <div class="line line2"></div>
+                    <div class="line line3"></div>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html" data-translate="nav_home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="galleries.html" data-translate="nav_galleries">Galleries</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="films.html" data-translate="nav_films">Films</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="packages.html" data-translate="nav_packages">Packages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="team.html" data-translate="nav_team">Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="contact.html" data-translate="nav_contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== CONTACT SECTION ===== -->
+    <section id="contact" class="alternate-bg">
+        <div class="container-wide">
+            <div class="section-header">
+                <p class="section-subtitle" data-translate="get_in_touch">Get In Touch</p>
+                <h1 data-translate="contact_us">Contact Us</h1>
+                <div class="section-divider"></div>
+                <div class="team-logo">
+                    <img src="assets/favicon/web-app-manifest-512x512.png"  alt="Events Studio Logo" class="team-logo-img">
+                </div>
+                <p class="section-description" data-translate="contact_description">
+                    Ready to book us for your special day? We'd love to hear about your vision and discuss how we can bring it to life.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT FORM SECTION ===== -->
+    <section id="contact-form-section">
+        <div class="container-wide">
+            <div class="contact-form-container">
+                <form class="contact-form" id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name" data-translate="full_name">Full Name *</label>
+                            <input type="text" id="name" name="name" required aria-label="Full Name" data-translate-placeholder="full_name" placeholder="Enter your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email" data-translate="email_address">Email Address *</label>
+                            <input type="email" id="email" name="email" required aria-label="Email Address" data-translate-placeholder="email_address" placeholder="your.email@example.com">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone" data-translate="phone_number">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" aria-label="Phone Number" data-translate-placeholder="phone_number" placeholder="+964 750 000 000">
+                        </div>
+                        <div class="form-group">
+                            <label for="date" data-translate="event_date">Event Date</label>
+                            <input type="date" id="date" name="date" aria-label="Event Date">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="package" data-translate="interested_package">Interested Package</label>
+                        <select id="package" name="package" class="package-select">
+                            <option value="" data-translate="select_package">Select a package...</option>
+                            <option value="bronze" data-translate="bronze_package">Bronze Package - $1,000</option>
+                            <option value="silver" data-translate="silver_package">Silver Package - $1,500</option>
+                            <option value="gold" data-translate="gold_package">Gold Package - $2,000</option>
+                            <option value="platinum" data-translate="platinum_package">Platinum Package - $2,500</option>
+                            <option value="diamond" data-translate="diamond_package">Diamond Package - $3,000</option>
+                            <option value="elite" data-translate="elite_package">Elite Package - $4,500</option>
+                            <option value="custom" data-translate="custom_package">Custom Package</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" data-translate="tell_us_story">Tell Us Your Story *</label>
+                        <textarea id="message" name="message" required aria-label="Message" data-translate-placeholder="tell_us_story" placeholder="Share your vision, event details, and anything you'd like us to know..."></textarea>
+                    </div>
+                    
+                    <div class="form-submit">
+                        <button type="submit" class="btn-submit" data-translate="send_message">Send Message</button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Contact Info Section -->
+            <div class="contact-info-section">
+                <div class="section-header">
+                    <p class="section-subtitle" data-translate="get_in_touch">Get In Touch</p>
+                    <h1 data-translate="contact_us">Contact Us</h1>
+                    <div class="section-divider"></div>
+                </div>
+                
+                <div class="contact-info-grid">
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h3 class="contact-info-title" data-translate="call_us">Call Us</h3>
+                        <div class="contact-info-text">
+                            <a href="tel:+9647504145732">+964 750 414 5732</a><br>
+                            <a href="tel:+9647502049480">+964 750 204 9480</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3 class="contact-info-title" data-translate="email_us">Email Us</h3>
+                        <div class="contact-info-text">
+                            <a href="mailto:eventsstudio21@gmail.com">eventsstudio21@gmail.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <h3 class="contact-info-title" data-translate="whatsapp_label">WhatsApp</h3>
+                        <div class="contact-info-text">
+                            <a href="https://wa.me/9647510579521">+964 751 057 9521</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3 class="contact-info-title" data-translate="visit_us">Visit Us</h3>
+                        <div class="contact-info-text">
+                            <span data-translate="location_text">Zakho - Duhok - Erbil 📍</span><br>
+                            <strong data-translate="hours_label">Hours:</strong><br>
+                            <strong data-translate="hours_text" style="color: #ff6b35;">Every Day Open: 10am - 10pm</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.5rem;">
+                    <img src="assets/favicon/favicon-96x96.png" alt="Events Studio Logo" class="developer-photo" style="width: 60px; height: 60px; border-radius: 50%; border: 3px solid #ff6b35; padding: 5px; background: rgba(255, 107, 53, 0.1);">
+                    <span style="color: #ff6b35; font-weight: 600; font-size: 1.1rem;">Events Studio</span>
+                </div>
+                <p data-translate="footer_description" style="color: var(--color-text-muted); font-size: 0.8rem; margin-bottom: 0.8rem; line-height: 1.3;">Luxury wedding photography & cinematography. Crafting timeless stories since 2025.</p>
+                <div class="social-links" style="margin-top: 0.8rem; display: flex; justify-content: center; gap: 0.8rem;">
+                    <a href="https://www.instagram.com/events.studi0?igsh=MTRwaDYyYjhjM21haQ==" target="_blank"  title="Instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@events.studi0?_r=1&_t=ZS-93ZK33YRGg1" target="_blank"  title="TikTok" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://snapchat.com/t/erS92aZh" target="_blank"  title="Snapchat" aria-label="Snapchat"><i class="fab fa-snapchat"></i></a>
+                    <a href="https://wa.me/9647510579521" target="_blank"  title="WhatsApp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4 data-translate="quick_links">Quick Links</h4>
+                <ul>
+                    <li><a href="index.html" data-translate="nav_home">Home</a></li>
+                    <li><a href="galleries-new.html" data-translate="nav_galleries">Galleries</a></li>
+                    <li><a href="films.html" data-translate="nav_films">Films</a></li>
+                    <li><a href="packages.html" data-translate="nav_packages">Our Packages</a></li>
+                    <li><a href="team.html" data-translate="nav_team">Team</a></li>
+                    <li><a href="contact.html" data-translate="nav_contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4 data-translate="services">Services</h4>
+                <ul>
+                    <li><a href="#" data-translate="photography">Photography</a></li>
+                    <li><a href="#" data-translate="cinematography">Cinematography</a></li>
+                    <li><a href="#" data-translate="highlight_reels">Highlight Reels</a></li>
+                    <li><a href="#" data-translate="post_production">Post-Production</a></li>
+                    <li><a href="#" data-translate="albums_prints">Albums & Prints</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4 data-translate="contact_info">Contact</h4>
+                <p style="color: var(--color-text-muted); font-size: 0.9rem; line-height: 1.8;">
+                    <strong data-translate="email_label">Email:</strong><br>
+                    <a href="mailto:eventsstudio21@gmail.com">eventsstudio21@gmail.com</a><br><br>
+                    <strong data-translate="phone_label">Phone:</strong><br>
+                    <a href="tel:+9647504145732">+964 750 414 5732</a><br><br>
+                    <strong data-translate="whatsapp_label">WhatsApp:</strong><br>
+                    <a href="https://wa.me/9647510579521">+964 751 057 9521</a><br><br>
+                    <strong data-translate="location_label">Location:</strong><br>
+                    <div style="background: rgba(255, 107, 53, 0.1); border: 1px solid rgba(255, 107, 53, 0.3); border-radius: 8px; padding: 0.8rem; margin-top: 0.5rem;">
+                        <a href="https://maps.google.com/maps?q=37.145811,42.660593&ll=37.145811,42.660593&z=16" target="_blank" style="color: #ff6b35; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span data-translate="location_text">Zakho - Duhok - Erbil 📍</span>
+                        </a>
+                    </div>
+                    <br><br>
+                    <strong data-translate="hours_label">Hours:</strong><br>
+                    <strong data-translate="hours_text" style="color: #ff6b35;">Every Day Open: 10am - 10pm</strong>
+                </p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <p data-translate="copyright">&copy; 2024 Events Studio. All rights reserved. Crafted with love and artistry.</p>
+                <div class="developer-credit">
+                    <a href="https://www.instagram.com/sallimmustafaaa?igsh=ODJvbXdrNThlZThv" target="_blank" class="developer-link">
+                        <span class="developer-text"><span data-translate="developed_by">Developed by</span> <strong>SalimMustefa</strong></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+    
+    <!-- WhatsApp Form Submission Script -->
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const date = document.getElementById('date').value;
+            const package = document.getElementById('package').value;
+            const message = document.getElementById('message').value;
+            
+            // Create WhatsApp message
+            let whatsappMessage = `🎉 *New Inquiry from Events Studio* 🎉\n\n`;
+            whatsappMessage += `👤 *Name:* ${name}\n`;
+            whatsappMessage += `📧 *Email:* ${email}\n`;
+            
+            if (phone) {
+                whatsappMessage += `📱 *Phone:* ${phone}\n`;
+            }
+            
+            if (date) {
+                whatsappMessage += `📅 *Event Date:* ${date}\n`;
+            }
+            
+            if (package) {
+                whatsappMessage += `📦 *Interested Package:* ${package}\n`;
+            }
+            
+            whatsappMessage += `\n💬 *Message:* ${message}`;
+            
+            // WhatsApp numbers (you can change these)
+            const whatsappNumber = '9647510579521'; // Your WhatsApp number
+            
+            // Create WhatsApp URL
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+            
+            // Open WhatsApp
+            window.open(whatsappUrl, '_blank');
+            
+            // Optional: Show success message
+            setTimeout(() => {
+                alert('Thank you for your inquiry! WhatsApp is opening with your message.');
+            }, 500);
+        });
+        
+        // Add focus effects to form elements
+        document.querySelectorAll('.form-group input, .form-group textarea, .form-group select').forEach(element => {
+            element.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+            });
+            
+            element.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
+
