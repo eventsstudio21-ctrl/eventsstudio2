@@ -1,0 +1,27 @@
+function openFullscreen() {
+    var elem = document.getElementById("myVideo");
+
+    // Check if the element is already in fullscreen
+    if (document.fullscreenElement) {
+        // If it is, exit fullscreen
+        document.exitFullscreen();
+    } else {
+        // Attempt to request fullscreen for mobile with allowance for fullscreen
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen({ navigationUI: 'hide' });
+        } else if (elem.webkitRequestFullscreen) { // Safari
+            elem.webkitRequestFullscreen({ navigationUI: 'hide' });
+        } else if (elem.msRequestFullscreen) { // IE11
+            elem.msRequestFullscreen();
+        } else {
+            console.error('Fullscreen API is not supported by this browser.');
+        }
+    }
+}
+
+// Better error handling for iOS devices
+document.addEventListener('webkitfullscreenchange', function() {
+    if (!document.webkitFullscreenElement) {
+        console.log('Exited fullscreen mode.');
+    }
+});
