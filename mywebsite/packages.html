@@ -571,7 +571,8 @@
             display: none;
         }
         
-        /* Remove default styles */
+        /* Remove default styles - More specific */
+        .packages-section .navbar-toggler,
         .navbar-toggler {
             border: none !important;
             outline: none !important;
@@ -580,9 +581,24 @@
             padding: 8px !important;
         }
         
+        .packages-section .navbar-toggler:focus,
         .navbar-toggler:focus {
             box-shadow: none !important;
             outline: none !important;
+        }
+        
+        /* Ensure hamburger is visible */
+        .packages-section .hamburger-modern,
+        .hamburger-modern {
+            width: 35px !important;
+            height: 30px !important;
+            position: relative !important;
+            cursor: pointer !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            transition: all 0.3s ease !important;
+            z-index: 1000 !important;
         }
         
         /* Glow effect */

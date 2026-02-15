@@ -333,6 +333,288 @@
             display: none;
         }
         
+        /* Enhanced Video Grid Styles */
+        .video-grid-enhanced {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+        
+        .video-card-enhanced {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+            aspect-ratio: 16/9;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .video-card-enhanced:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.4);
+            border-color: rgba(255, 107, 53, 0.5);
+        }
+        
+        .video-thumbnail {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .video-preview {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        
+        .video-card-enhanced:hover .video-preview {
+            transform: scale(1.05);
+        }
+        
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(255, 107, 53, 0.3));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.8;
+            transition: all 0.4s ease;
+        }
+        
+        .video-card-enhanced:hover .video-overlay {
+            opacity: 1;
+        }
+        
+        .video-content {
+            text-align: center;
+            color: white;
+            padding: 2rem;
+        }
+        
+        .video-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+        
+        .video-description {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+        
+        .video-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .video-meta span {
+            background: rgba(255, 107, 53, 0.8);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .badge-premium {
+            background: linear-gradient(135deg, #ffd700, #ffed4e) !important;
+            color: #000 !important;
+            border: 1px solid rgba(255, 215, 0, 0.5) !important;
+        }
+        
+        .badge-romantic {
+            background: linear-gradient(135deg, #ff6b6b, #ff8787) !important;
+            color: #fff !important;
+            border: 1px solid rgba(255, 107, 107, 0.5) !important;
+        }
+        
+        .badge-professional {
+            background: linear-gradient(135deg, #4ecdc4, #44a08d) !important;
+            color: #fff !important;
+            border: 1px solid rgba(78, 205, 196, 0.5) !important;
+        }
+        
+        .badge-cultural {
+            background: linear-gradient(135deg, #f093fb, #f5576c) !important;
+            color: #fff !important;
+            border: 1px solid rgba(240, 147, 251, 0.5) !important;
+        }
+        
+        .badge-special {
+            background: linear-gradient(135deg, #ff6b35, #ff8c42) !important;
+            color: #fff !important;
+            border: 1px solid rgba(255, 107, 53, 0.5) !important;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .play-button {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 107, 53, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            margin: 0 auto;
+        }
+        
+        .play-button:hover {
+            background: #ff6b35;
+            transform: scale(1.1);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+        
+        /* Video Modal Styles */
+        .video-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        .video-modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
+            border: 2px solid rgba(255, 107, 53, 0.3);
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            background: rgba(255, 107, 53, 0.9);
+            transform: scale(1.1);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .video-container-modal {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .video-container-modal video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 13px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .video-grid-enhanced {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 1rem 0;
+            }
+            
+            .video-card-enhanced {
+                border-radius: 12px;
+            }
+            
+            .video-title {
+                font-size: 1.3rem;
+            }
+            
+            .video-description {
+                font-size: 0.9rem;
+            }
+            
+            .play-button {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+            
+            .modal-content {
+                max-width: 95%;
+                max-height: 95%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .video-grid-enhanced {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .video-card-enhanced {
+                border-radius: 10px;
+            }
+            
+            .video-title {
+                font-size: 1.1rem;
+            }
+            
+            .video-description {
+                font-size: 0.8rem;
+            }
+            
+            .play-button {
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
+        }
+        
         /* Remove default styles */
         .navbar-toggler {
             border: none !important;
@@ -433,7 +715,7 @@
         </div>
     </section>
 
-    <!-- ===== VIDEO SECTION ===== -->
+    <!-- ===== VIDEO SHOWCASE ===== -->
     <section id="video-showcase" class="alternate-bg">
         <div class="container">
             <div class="section-header text-center">
@@ -445,86 +727,147 @@
                     Each story is unique, just like your love story.
                 </p>
             </div>
-            <div class="row g-4">
-                <div class="col-lg-6 col-md-12 mb-4">
-                    <div class="video-container">
-                        <video class="featured-video" autoplay muted loop playsinline id="video1">
-                            <source src="assets/videos/video1234.webm" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <div class="video-overlay">
-                            <div class="video-content">
-                                <h3 class="video-title" data-translate="valentine_story">Valentine's Day Love Story</h3>
-                                <p class="video-description" data-translate="valentine_desc">Celebrating romance and eternal love</p>
-                                <div class="video-play-icon" onclick="openFullscreen('video1')">
-                                    <i class="fas fa-play"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-12 mb-4">
-                    <div class="video-container">
-                        <video class="featured-video" autoplay muted loop playsinline id="video2">
-                            <source src="assets/videos/IMG_5192.MP4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <div class="video-overlay">
-                            <div class="video-content">
-                                <h3 class="video-title" data-translate="wedding_highlights">Wedding Highlights</h3>
-                                <p class="video-description" data-translate="wedding_desc">Capturing every precious moment</p>
-                                <div class="video-play-icon" onclick="openFullscreen('video2')">
-                                    <i class="fas fa-play"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-12 mb-4">
-                    <div class="video-container">
-                        <video class="featured-video" autoplay muted loop playsinline id="video3">
-                            <source src="assets/videos/video.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <div class="video-overlay">
-                            <div class="video-content">
-                                <h3 class="video-title" data-translate="cinematic_story">Cinematic Story</h3>
-                                <p class="video-description" data-translate="cinematic_desc">Creating memories that last forever</p>
-                                <div class="video-play-icon" onclick="openFullscreen('video3')">
-                                    <i class="fas fa-play"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-12 mb-4">
-                    <div class="video-container">
-                        <video class="featured-video" autoplay muted loop playsinline id="video4">
-                            <source src="assets/videos/video09.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <div class="video-overlay">
-                            <div class="video-content">
-                                <h3 class="video-title" data-translate="cinematic_excellence">Cinematic Excellence</h3>
-                                <p class="video-description" data-translate="excellence_desc">Professional wedding storytelling with artistic vision</p>
-                                <div class="video-play-icon" onclick="openFullscreen('video4')">
-                                    <i class="fas fa-play"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-12 mb-4">
-                    <div class="video-container">
-                        <video class="featured-video" autoplay muted loop playsinline id="video5">
+            
+            <!-- Enhanced Video Grid -->
+            <div class="video-grid-enhanced">
+                <!-- Video 1 -->
+                <div class="video-card-enhanced" data-video-id="vd1">
+                    <div class="video-thumbnail">
+                        <video class="video-preview" autoplay muted loop playsinline>
                             <source src="assets/videos/vd1.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                         <div class="video-overlay">
                             <div class="video-content">
-                                <h3 class="video-title" data-translate="henna_celebration">Henna Day Celebration</h3>
-                                <p class="video-description" data-translate="henna_desc">Traditional henna ceremony and joyful moments</p>
-                                <div class="video-play-icon" onclick="openFullscreen('video5')">
+                                <h3 class="video-title" data-translate="wedding_highlights">
+                                    Wedding Highlights
+                                </h3>
+                                <p class="video-description" data-translate="wedding_desc">
+                                    Capturing every precious moment
+                                </p>
+                                <div class="video-meta">
+                                    <span class="quality">HD</span>
+                                    <span class="badge-premium" data-translate="premium">
+                                        Premium
+                                    </span>
+                                </div>
+                                <div class="play-button" onclick="openVideoModal('vd1.mp4')">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="video-card-enhanced" data-video-id="vd2">
+                    <div class="video-thumbnail">
+                        <video class="video-preview" autoplay muted loop playsinline>
+                            <source src="assets/videos/vd2.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="video-overlay">
+                            <div class="video-content">
+                                <h3 class="video-title" data-translate="cinematic_story">
+                                    Cinematic Story
+                                </h3>
+                                <p class="video-description" data-translate="cinematic_desc">
+                                    Creating memories that last forever
+                                </p>
+                                <div class="video-meta">
+                                    <span class="quality">HD</span>
+                                    <span class="badge-romantic" data-translate="romantic">
+                                        Romantic
+                                    </span>
+                                </div>
+                                <div class="play-button" onclick="openVideoModal('vd2.mp4')">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 3 -->
+                <div class="video-card-enhanced" data-video-id="vd3">
+                    <div class="video-thumbnail">
+                        <video class="video-preview" autoplay muted loop playsinline>
+                            <source src="assets/videos/vd3.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="video-overlay">
+                            <div class="video-content">
+                                <h3 class="video-title" data-translate="cinematic_excellence">
+                                    Cinematic Excellence
+                                </h3>
+                                <p class="video-description" data-translate="excellence_desc">
+                                    Professional wedding storytelling with artistic vision
+                                </p>
+                                <div class="video-meta">
+                                    <span class="quality">HD</span>
+                                    <span class="badge-professional" data-translate="professional">
+                                        Professional
+                                    </span>
+                                </div>
+                                <div class="play-button" onclick="openVideoModal('vd3.mp4')">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 4 -->
+                <div class="video-card-enhanced" data-video-id="vd4">
+                    <div class="video-thumbnail">
+                        <video class="video-preview" autoplay muted loop playsinline>
+                            <source src="assets/videos/vd4.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="video-overlay">
+                            <div class="video-content">
+                                <h3 class="video-title" data-translate="henna_celebration">
+                                    Henna Celebration
+                                </h3>
+                                <p class="video-description" data-translate="henna_desc">
+                                    Traditional henna ceremony and joyful moments
+                                </p>
+                                <div class="video-meta">
+                                    <span class="quality">HD</span>
+                                    <span class="badge-cultural" data-translate="cultural">
+                                        Cultural
+                                    </span>
+                                </div>
+                                <div class="play-button" onclick="openVideoModal('vd4.mp4')">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 5 -->
+                <div class="video-card-enhanced" data-video-id="vd5">
+                    <div class="video-thumbnail">
+                        <video class="video-preview" autoplay muted loop playsinline>
+                            <source src="assets/videos/vd5.webm" type="video/webm">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="video-overlay">
+                            <div class="video-content">
+                                <h3 class="video-title" data-translate="valentine_story">
+                                    Valentine's Day Special
+                                </h3>
+                                <p class="video-description" data-translate="valentine_desc">
+                                    Celebrating romance and eternal love
+                                </p>
+                                <div class="video-meta">
+                                    <span class="quality">4K</span>
+                                    <span class="badge-special" data-translate="special">
+                                        Special
+                                    </span>
+                                </div>
+                                <div class="play-button" onclick="openVideoModal('vd5.webm')">
                                     <i class="fas fa-play"></i>
                                 </div>
                             </div>
@@ -534,6 +877,20 @@
             </div>
         </div>
     </section>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="video-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeVideoModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="video-container-modal">
+                <video id="modalVideo" controls>
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
  <!-- ===== FOOTER ===== -->
     <footer>
         <div class="footer-content">
@@ -613,35 +970,106 @@
     <script src="js/script.js"></script>
     
     <script>
+        // Language Switching Function
+        function switchLanguage(lang) {
+            const body = document.body;
+            const langButtons = document.querySelectorAll('.lang-option');
+            
+            // Remove all language classes
+            body.classList.remove('lang-en', 'lang-ar');
+            
+            // Add the selected language class
+            body.classList.add(`lang-${lang}`);
+            
+            // Update button states
+            langButtons.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent.toLowerCase() === lang) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Save preference to localStorage
+            localStorage.setItem('preferredLanguage', lang);
+        }
+        
+        // Initialize language on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+            switchLanguage(savedLang);
+        });
+        
+        // Video Modal Functions
+        function openVideoModal(videoSrc) {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('modalVideo');
+            
+            // Set video source
+            video.src = 'assets/videos/' + videoSrc;
+            video.load();
+            
+            // Show modal
+            modal.classList.add('active');
+            
+            // Play video with proper error handling
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.log('Video play failed:', error);
+                    // Try to play on user interaction
+                    video.addEventListener('click', function playOnClick() {
+                        video.play().catch(e => console.log('Click play failed:', e));
+                        video.removeEventListener('click', playOnClick);
+                    }, { once: true });
+                });
+            }
+            
+            // Handle escape key
+            document.addEventListener('keydown', function handleEscape(e) {
+                if (e.key === 'Escape') {
+                    closeVideoModal();
+                    document.removeEventListener('keydown', handleEscape);
+                }
+            });
+        }
+        
+        function closeVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('modalVideo');
+            
+            // Pause video
+            video.pause();
+            video.currentTime = 0;
+            
+            // Hide modal
+            modal.classList.remove('active');
+            
+            // Clear source
+            setTimeout(() => {
+                video.src = '';
+            }, 300);
+        }
+        
+        // Close modal when clicking outside video
+        document.getElementById('videoModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeVideoModal();
+            }
+        });
+        
+        // Prevent video from stopping when clicking controls
+        document.getElementById('modalVideo').addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+        
         // Dynamic hamburger animation
         document.addEventListener('DOMContentLoaded', function() {
             const navbarToggler = document.querySelector('.navbar-toggler');
-            const navbarCollapse = document.querySelector('.navbarCollapse');
-            const hamburger = document.querySelector('.hamburger');
-            const spans = document.querySelectorAll('.hamburger span');
+            const navbarCollapse = document.querySelector('#navbarNav');
             
             if (navbarToggler && navbarCollapse) {
-                // Add ripple effect on click
-                navbarToggler.addEventListener('click', function(e) {
+                navbarToggler.addEventListener('click', function() {
                     this.classList.toggle('active');
-                    
-                    // Create ripple effect
-                    const ripple = document.createElement('div');
-                    ripple.style.position = 'absolute';
-                    ripple.style.width = '20px';
-                    ripple.style.height = '20px';
-                    ripple.style.background = 'rgba(255, 107, 53, 0.5)';
-                    ripple.style.borderRadius = '50%';
-                    ripple.style.transform = 'translate(-50%, -50%)';
-                    ripple.style.pointerEvents = 'none';
-                    ripple.style.animation = 'rippleEffect 0.6s ease-out';
-                    
-                    const rect = this.getBoundingClientRect();
-                    ripple.style.left = (e.clientX - rect.left) + 'px';
-                    ripple.style.top = (e.clientY - rect.top) + 'px';
-                    
-                    this.appendChild(ripple);
-                    
                 });
                 
                 navbarCollapse.addEventListener('hidden.bs.collapse', function() {
@@ -654,303 +1082,5 @@
             }
         });
     </script>
-    
-    <script>
-        function openFullscreen(videoId) {
-            const video = document.getElementById(videoId);
-            
-            // Enhanced device detection
-            const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-            const isAndroid = /Android/i.test(navigator.userAgent);
-            const isSafari = /Safari/i.test(navigator.userAgent) && !/Chrome/i.test(navigator.userAgent);
-            const isMobile = isIOS || isAndroid;
-            
-            if (isIOS) {
-                // iOS-specific handling (iPhone, iPad, iPod)
-                handleIOSFullscreen(video);
-            } else if (isAndroid) {
-                // Android-specific handling
-                handleAndroidFullscreen(video);
-            } else if (isSafari) {
-                // Safari desktop handling
-                handleSafariFullscreen(video);
-            } else {
-                // Other browsers (Chrome, Firefox, Edge desktop)
-                handleDesktopFullscreen(video);
-            }
-        }
-        
-        function handleIOSFullscreen(video) {
-            // Create custom fullscreen for iOS
-            const fullscreenContainer = document.createElement('div');
-            fullscreenContainer.style.position = 'fixed';
-            fullscreenContainer.style.top = '0';
-            fullscreenContainer.style.left = '0';
-            fullscreenContainer.style.width = '100vw';
-            fullscreenContainer.style.height = '100vh';
-            fullscreenContainer.style.backgroundColor = 'black';
-            fullscreenContainer.style.zIndex = '9999';
-            fullscreenContainer.style.display = 'flex';
-            fullscreenContainer.style.alignItems = 'center';
-            fullscreenContainer.style.justifyContent = 'center';
-            fullscreenContainer.style.touchAction = 'none';
-            
-            // Clone video for fullscreen
-            const fullscreenVideo = video.cloneNode(true);
-            fullscreenVideo.style.width = '100%';
-            fullscreenVideo.style.height = '100%';
-            fullscreenVideo.style.objectFit = 'contain';
-            fullscreenVideo.controls = true;
-            fullscreenVideo.muted = false;
-            fullscreenVideo.autoplay = true;
-            fullscreenVideo.playsInline = true; // Keep playsInline for iOS compatibility
-            fullscreenVideo.setAttribute('playsinline', '');
-            
-            // Add close button
-            const closeBtn = document.createElement('div');
-            closeBtn.innerHTML = '✕';
-            closeBtn.style.position = 'absolute';
-            closeBtn.style.top = '20px';
-            closeBtn.style.right = '20px';
-            closeBtn.style.fontSize = '30px';
-            closeBtn.style.color = 'white';
-            closeBtn.style.cursor = 'pointer';
-            closeBtn.style.zIndex = '10000';
-            closeBtn.style.backgroundColor = 'rgba(0,0,0,0.7)';
-            closeBtn.style.width = '44px';
-            closeBtn.style.height = '44px';
-            closeBtn.style.borderRadius = '50%';
-            closeBtn.style.display = 'flex';
-            closeBtn.style.alignItems = 'center';
-            closeBtn.style.justifyContent = 'center';
-            closeBtn.style.border = '2px solid rgba(255,255,255,0.3)';
-            
-            closeBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                document.body.removeChild(fullscreenContainer);
-                video.pause();
-                video.currentTime = 0;
-            });
-            
-            // Add tap-to-close functionality on video area
-            fullscreenVideo.addEventListener('click', function(e) {
-                if (e.target === fullscreenVideo) {
-                    document.body.removeChild(fullscreenContainer);
-                    video.pause();
-                    video.currentTime = 0;
-                }
-            });
-            
-            fullscreenContainer.appendChild(fullscreenVideo);
-            fullscreenContainer.appendChild(closeBtn);
-            document.body.appendChild(fullscreenContainer);
-            
-            // Play the video with proper error handling
-            const playPromise = fullscreenVideo.play();
-            if (playPromise !== undefined) {
-                playPromise.catch(error => {
-                    console.log('iOS video play failed:', error);
-                    // Try to play with user interaction
-                    fullscreenContainer.addEventListener('click', function playOnTouch() {
-                        fullscreenVideo.play().catch(e => console.log('iOS play on touch failed:', e));
-                        fullscreenContainer.removeEventListener('click', playOnTouch);
-                    }, { once: true });
-                });
-            }
-        }
-        
-        function handleAndroidFullscreen(video) {
-            // Try native fullscreen first for Android
-            video.muted = false;
-            video.playsInline = false;
-            
-            const playPromise = video.play();
-            if (playPromise !== undefined) {
-                playPromise.then(() => {
-                    // Try fullscreen APIs
-                    if (video.requestFullscreen) {
-                        video.requestFullscreen().catch(() => {
-                            enterManualFullscreen(video);
-                        });
-                    } else if (video.webkitRequestFullscreen) {
-                        video.webkitRequestFullscreen().catch(() => {
-                            enterManualFullscreen(video);
-                        });
-                    } else if (video.msRequestFullscreen) {
-                        video.msRequestFullscreen().catch(() => {
-                            enterManualFullscreen(video);
-                        });
-                    } else {
-                        enterManualFullscreen(video);
-                    }
-                }).catch(error => {
-                    console.log('Android video play failed:', error);
-                    enterManualFullscreen(video);
-                });
-            }
-        }
-        
-        function handleSafariFullscreen(video) {
-            // Safari desktop specific handling
-            video.muted = false;
-            video.playsInline = false;
-            
-            const playPromise = video.play();
-            if (playPromise !== undefined) {
-                playPromise.then(() => {
-                    // Safari supports requestFullscreen but might need special handling
-                    if (video.webkitRequestFullscreen) {
-                        video.webkitRequestFullscreen();
-                    } else if (video.requestFullscreen) {
-                        video.requestFullscreen();
-                    } else {
-                        enterManualFullscreen(video);
-                    }
-                }).catch(error => {
-                    console.log('Safari video play failed:', error);
-                    enterManualFullscreen(video);
-                });
-            }
-        }
-        
-        function handleDesktopFullscreen(video) {
-            // Standard desktop handling
-            video.muted = false;
-            video.playsInline = false;
-            
-            const playPromise = video.play();
-            if (playPromise !== undefined) {
-                playPromise.then(() => {
-                    if (video.requestFullscreen) {
-                        video.requestFullscreen();
-                    } else if (video.webkitRequestFullscreen) {
-                        video.webkitRequestFullscreen();
-                    } else if (video.msRequestFullscreen) {
-                        video.msRequestFullscreen();
-                    } else {
-                        enterManualFullscreen(video);
-                    }
-                }).catch(error => {
-                    console.log('Desktop video play failed:', error);
-                    // Still try to open fullscreen even if play fails
-                    if (video.requestFullscreen) {
-                        video.requestFullscreen();
-                    } else if (video.webkitRequestFullscreen) {
-                        video.webkitRequestFullscreen();
-                    } else if (video.msRequestFullscreen) {
-                        video.msRequestFullscreen();
-                    } else {
-                        enterManualFullscreen(video);
-                    }
-                });
-            }
-        }
-        
-        // Fallback manual fullscreen for unsupported browsers
-        function enterManualFullscreen(video) {
-            const fullscreenContainer = document.createElement('div');
-            fullscreenContainer.style.position = 'fixed';
-            fullscreenContainer.style.top = '0';
-            fullscreenContainer.style.left = '0';
-            fullscreenContainer.style.width = '100vw';
-            fullscreenContainer.style.height = '100vh';
-            fullscreenContainer.style.backgroundColor = 'black';
-            fullscreenContainer.style.zIndex = '9999';
-            fullscreenContainer.style.display = 'flex';
-            fullscreenContainer.style.alignItems = 'center';
-            fullscreenContainer.style.justifyContent = 'center';
-            
-            const fullscreenVideo = video.cloneNode(true);
-            fullscreenVideo.style.width = '100%';
-            fullscreenVideo.style.height = '100%';
-            fullscreenVideo.style.objectFit = 'contain';
-            fullscreenVideo.controls = true;
-            fullscreenVideo.muted = false;
-            fullscreenVideo.autoplay = true;
-            
-            const closeBtn = document.createElement('div');
-            closeBtn.innerHTML = '✕';
-            closeBtn.style.position = 'absolute';
-            closeBtn.style.top = '20px';
-            closeBtn.style.right = '20px';
-            closeBtn.style.fontSize = '30px';
-            closeBtn.style.color = 'white';
-            closeBtn.style.cursor = 'pointer';
-            closeBtn.style.zIndex = '10000';
-            closeBtn.style.backgroundColor = 'rgba(0,0,0,0.5)';
-            closeBtn.style.width = '40px';
-            closeBtn.style.height = '40px';
-            closeBtn.style.borderRadius = '50%';
-            closeBtn.style.display = 'flex';
-            closeBtn.style.alignItems = 'center';
-            closeBtn.style.justifyContent = 'center';
-            
-            closeBtn.addEventListener('click', function() {
-                document.body.removeChild(fullscreenContainer);
-                video.pause();
-                video.currentTime = 0;
-            });
-            
-            fullscreenContainer.appendChild(fullscreenVideo);
-            fullscreenContainer.appendChild(closeBtn);
-            document.body.appendChild(fullscreenContainer);
-            
-            fullscreenVideo.play().catch(error => {
-                console.log('Manual fullscreen video play failed:', error);
-            });
-        }
-        
-        // Add click event listeners to video containers for better UX
-        document.addEventListener('DOMContentLoaded', function() {
-            const videoContainers = document.querySelectorAll('.video-container');
-            
-            videoContainers.forEach(container => {
-                const video = container.querySelector('video');
-                const playIcon = container.querySelector('.video-play-icon');
-                
-                // Add click listener to the entire video container
-                container.addEventListener('click', function(e) {
-                    // Prevent triggering if clicking on the play icon (it has its own handler)
-                    if (!e.target.closest('.video-play-icon')) {
-                        const videoId = video.id;
-                        openFullscreen(videoId);
-                    }
-                });
-                
-                // Add hover effect to show play icon
-                container.addEventListener('mouseenter', function() {
-                    if (playIcon) {
-                        playIcon.style.opacity = '1';
-                        playIcon.style.transform = 'scale(1.1)';
-                    }
-                });
-                
-                container.addEventListener('mouseleave', function() {
-                    if (playIcon) {
-                        playIcon.style.opacity = '0.8';
-                        playIcon.style.transform = 'scale(1)';
-                    }
-                });
-                
-                // Touch events for mobile
-                container.addEventListener('touchstart', function() {
-                    if (playIcon) {
-                        playIcon.style.opacity = '1';
-                        playIcon.style.transform = 'scale(1.1)';
-                    }
-                });
-                
-                container.addEventListener('touchend', function() {
-                    if (playIcon) {
-                        setTimeout(() => {
-                            playIcon.style.opacity = '0.8';
-                            playIcon.style.transform = 'scale(1)';
-                        }, 200);
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 </html>
-

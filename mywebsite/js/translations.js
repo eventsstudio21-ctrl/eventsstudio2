@@ -166,6 +166,13 @@ const translations = {
         blog: "Blog",
         faq: "FAQ",
         
+        // Video badges
+        premium: "Premium",
+        romantic: "Romantic",
+        professional: "Professional",
+        cultural: "Cultural",
+        special: "Special",
+        
         // Packages Page
         investment: "Investment",
         packages_description: "Flexible packages designed to fit your vision and budget. Every package includes full-day coverage, premium editing, and digital delivery.",
@@ -440,6 +447,13 @@ const translations = {
         testimonials: "آراء العملاء",
         blog: "المدونة",
         faq: "الأسئلة الشائعة",
+        
+        // Video badges
+        premium: "مميز",
+        romantic: "رومانسي",
+        professional: "احترافي",
+        cultural: "ثقافي",
+        special: "خاص",
         
         // Packages Page
         investment: "استثمار",
