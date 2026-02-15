@@ -370,60 +370,14 @@
 <body data-page-title="nav_films">
 
     <!-- Background Music -->
-    <audio id="bgMusic" loop>
-        <source src="assets/Song-bg.mp3" type="audio/mpeg">
+    <audio id="bgMusic" loop preload="auto">
         <source src="Song-bg.mp3" type="audio/mpeg">
+        <source src="assets/Song-bg.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
     
-    <script>
-        // Continuous background music across pages
-        document.addEventListener('DOMContentLoaded', function() {
-            const audio = document.getElementById('bgMusic');
-            const savedTime = sessionStorage.getItem('musicTime');
-            const wasPlaying = sessionStorage.getItem('musicPlaying');
-            
-            // Set volume to 0.3%
-            audio.volume = 0.003;
-            
-            // Restore playback position and state
-            if (savedTime) {
-                audio.currentTime = parseFloat(savedTime);
-            }
-            
-            // Auto-play if it was playing before OR if first visit
-            if (wasPlaying === 'true' || !wasPlaying) {
-                // Try to play music (may be blocked by browser)
-                const playPromise = audio.play();
-                if (playPromise !== undefined) {
-                    playPromise.catch(e => {
-                        console.log('Autoplay prevented - will start on user interaction');
-                        // Add click listener to start music on first interaction
-                        document.addEventListener('click', function startMusic() {
-                            audio.play();
-                            document.removeEventListener('click', startMusic);
-                        }, { once: true });
-                    });
-                }
-            }
-            
-            // Save current time and playing state periodically
-            setInterval(() => {
-                if (!audio.paused) {
-                    sessionStorage.setItem('musicTime', audio.currentTime.toString());
-                    sessionStorage.setItem('musicPlaying', 'true');
-                } else {
-                    sessionStorage.setItem('musicPlaying', 'false');
-                }
-            }, 1000);
-            
-            // Save state when page is unloading
-            window.addEventListener('beforeunload', function() {
-                sessionStorage.setItem('musicTime', audio.currentTime.toString());
-                sessionStorage.setItem('musicPlaying', !audio.paused ? 'true' : 'false');
-            });
-        });
-    </script>
+    <!-- Background Music System -->
+    <script src="js/background-music.js"></script>
 
     <!-- ===== NAVIGATION ===== -->
     <nav id="navbar" class="navbar navbar-expand-lg navbar-dark fixed-top">
@@ -705,27 +659,244 @@
         function openFullscreen(videoId) {
             const video = document.getElementById(videoId);
             
-            // Play the video with sound
+            // Enhanced device detection
+            const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+            const isAndroid = /Android/i.test(navigator.userAgent);
+            const isSafari = /Safari/i.test(navigator.userAgent) && !/Chrome/i.test(navigator.userAgent);
+            const isMobile = isIOS || isAndroid;
+            
+            if (isIOS) {
+                // iOS-specific handling (iPhone, iPad, iPod)
+                handleIOSFullscreen(video);
+            } else if (isAndroid) {
+                // Android-specific handling
+                handleAndroidFullscreen(video);
+            } else if (isSafari) {
+                // Safari desktop handling
+                handleSafariFullscreen(video);
+            } else {
+                // Other browsers (Chrome, Firefox, Edge desktop)
+                handleDesktopFullscreen(video);
+            }
+        }
+        
+        function handleIOSFullscreen(video) {
+            // Create custom fullscreen for iOS
+            const fullscreenContainer = document.createElement('div');
+            fullscreenContainer.style.position = 'fixed';
+            fullscreenContainer.style.top = '0';
+            fullscreenContainer.style.left = '0';
+            fullscreenContainer.style.width = '100vw';
+            fullscreenContainer.style.height = '100vh';
+            fullscreenContainer.style.backgroundColor = 'black';
+            fullscreenContainer.style.zIndex = '9999';
+            fullscreenContainer.style.display = 'flex';
+            fullscreenContainer.style.alignItems = 'center';
+            fullscreenContainer.style.justifyContent = 'center';
+            fullscreenContainer.style.touchAction = 'none';
+            
+            // Clone video for fullscreen
+            const fullscreenVideo = video.cloneNode(true);
+            fullscreenVideo.style.width = '100%';
+            fullscreenVideo.style.height = '100%';
+            fullscreenVideo.style.objectFit = 'contain';
+            fullscreenVideo.controls = true;
+            fullscreenVideo.muted = false;
+            fullscreenVideo.autoplay = true;
+            fullscreenVideo.playsInline = true; // Keep playsInline for iOS compatibility
+            fullscreenVideo.setAttribute('playsinline', '');
+            
+            // Add close button
+            const closeBtn = document.createElement('div');
+            closeBtn.innerHTML = '✕';
+            closeBtn.style.position = 'absolute';
+            closeBtn.style.top = '20px';
+            closeBtn.style.right = '20px';
+            closeBtn.style.fontSize = '30px';
+            closeBtn.style.color = 'white';
+            closeBtn.style.cursor = 'pointer';
+            closeBtn.style.zIndex = '10000';
+            closeBtn.style.backgroundColor = 'rgba(0,0,0,0.7)';
+            closeBtn.style.width = '44px';
+            closeBtn.style.height = '44px';
+            closeBtn.style.borderRadius = '50%';
+            closeBtn.style.display = 'flex';
+            closeBtn.style.alignItems = 'center';
+            closeBtn.style.justifyContent = 'center';
+            closeBtn.style.border = '2px solid rgba(255,255,255,0.3)';
+            
+            closeBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                document.body.removeChild(fullscreenContainer);
+                video.pause();
+                video.currentTime = 0;
+            });
+            
+            // Add tap-to-close functionality on video area
+            fullscreenVideo.addEventListener('click', function(e) {
+                if (e.target === fullscreenVideo) {
+                    document.body.removeChild(fullscreenContainer);
+                    video.pause();
+                    video.currentTime = 0;
+                }
+            });
+            
+            fullscreenContainer.appendChild(fullscreenVideo);
+            fullscreenContainer.appendChild(closeBtn);
+            document.body.appendChild(fullscreenContainer);
+            
+            // Play the video with proper error handling
+            const playPromise = fullscreenVideo.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.log('iOS video play failed:', error);
+                    // Try to play with user interaction
+                    fullscreenContainer.addEventListener('click', function playOnTouch() {
+                        fullscreenVideo.play().catch(e => console.log('iOS play on touch failed:', e));
+                        fullscreenContainer.removeEventListener('click', playOnTouch);
+                    }, { once: true });
+                });
+            }
+        }
+        
+        function handleAndroidFullscreen(video) {
+            // Try native fullscreen first for Android
             video.muted = false;
-            video.play().then(() => {
-                // Request fullscreen after video starts playing
-                if (video.requestFullscreen) {
-                    video.requestFullscreen();
-                } else if (video.webkitRequestFullscreen) {
-                    video.webkitRequestFullscreen();
-                } else if (video.msRequestFullscreen) {
-                    video.msRequestFullscreen();
-                }
-            }).catch(error => {
-                console.log('Video play failed:', error);
-                // Still try to open fullscreen even if play fails
-                if (video.requestFullscreen) {
-                    video.requestFullscreen();
-                } else if (video.webkitRequestFullscreen) {
-                    video.webkitRequestFullscreen();
-                } else if (video.msRequestFullscreen) {
-                    video.msRequestFullscreen();
-                }
+            video.playsInline = false;
+            
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    // Try fullscreen APIs
+                    if (video.requestFullscreen) {
+                        video.requestFullscreen().catch(() => {
+                            enterManualFullscreen(video);
+                        });
+                    } else if (video.webkitRequestFullscreen) {
+                        video.webkitRequestFullscreen().catch(() => {
+                            enterManualFullscreen(video);
+                        });
+                    } else if (video.msRequestFullscreen) {
+                        video.msRequestFullscreen().catch(() => {
+                            enterManualFullscreen(video);
+                        });
+                    } else {
+                        enterManualFullscreen(video);
+                    }
+                }).catch(error => {
+                    console.log('Android video play failed:', error);
+                    enterManualFullscreen(video);
+                });
+            }
+        }
+        
+        function handleSafariFullscreen(video) {
+            // Safari desktop specific handling
+            video.muted = false;
+            video.playsInline = false;
+            
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    // Safari supports requestFullscreen but might need special handling
+                    if (video.webkitRequestFullscreen) {
+                        video.webkitRequestFullscreen();
+                    } else if (video.requestFullscreen) {
+                        video.requestFullscreen();
+                    } else {
+                        enterManualFullscreen(video);
+                    }
+                }).catch(error => {
+                    console.log('Safari video play failed:', error);
+                    enterManualFullscreen(video);
+                });
+            }
+        }
+        
+        function handleDesktopFullscreen(video) {
+            // Standard desktop handling
+            video.muted = false;
+            video.playsInline = false;
+            
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    if (video.requestFullscreen) {
+                        video.requestFullscreen();
+                    } else if (video.webkitRequestFullscreen) {
+                        video.webkitRequestFullscreen();
+                    } else if (video.msRequestFullscreen) {
+                        video.msRequestFullscreen();
+                    } else {
+                        enterManualFullscreen(video);
+                    }
+                }).catch(error => {
+                    console.log('Desktop video play failed:', error);
+                    // Still try to open fullscreen even if play fails
+                    if (video.requestFullscreen) {
+                        video.requestFullscreen();
+                    } else if (video.webkitRequestFullscreen) {
+                        video.webkitRequestFullscreen();
+                    } else if (video.msRequestFullscreen) {
+                        video.msRequestFullscreen();
+                    } else {
+                        enterManualFullscreen(video);
+                    }
+                });
+            }
+        }
+        
+        // Fallback manual fullscreen for unsupported browsers
+        function enterManualFullscreen(video) {
+            const fullscreenContainer = document.createElement('div');
+            fullscreenContainer.style.position = 'fixed';
+            fullscreenContainer.style.top = '0';
+            fullscreenContainer.style.left = '0';
+            fullscreenContainer.style.width = '100vw';
+            fullscreenContainer.style.height = '100vh';
+            fullscreenContainer.style.backgroundColor = 'black';
+            fullscreenContainer.style.zIndex = '9999';
+            fullscreenContainer.style.display = 'flex';
+            fullscreenContainer.style.alignItems = 'center';
+            fullscreenContainer.style.justifyContent = 'center';
+            
+            const fullscreenVideo = video.cloneNode(true);
+            fullscreenVideo.style.width = '100%';
+            fullscreenVideo.style.height = '100%';
+            fullscreenVideo.style.objectFit = 'contain';
+            fullscreenVideo.controls = true;
+            fullscreenVideo.muted = false;
+            fullscreenVideo.autoplay = true;
+            
+            const closeBtn = document.createElement('div');
+            closeBtn.innerHTML = '✕';
+            closeBtn.style.position = 'absolute';
+            closeBtn.style.top = '20px';
+            closeBtn.style.right = '20px';
+            closeBtn.style.fontSize = '30px';
+            closeBtn.style.color = 'white';
+            closeBtn.style.cursor = 'pointer';
+            closeBtn.style.zIndex = '10000';
+            closeBtn.style.backgroundColor = 'rgba(0,0,0,0.5)';
+            closeBtn.style.width = '40px';
+            closeBtn.style.height = '40px';
+            closeBtn.style.borderRadius = '50%';
+            closeBtn.style.display = 'flex';
+            closeBtn.style.alignItems = 'center';
+            closeBtn.style.justifyContent = 'center';
+            
+            closeBtn.addEventListener('click', function() {
+                document.body.removeChild(fullscreenContainer);
+                video.pause();
+                video.currentTime = 0;
+            });
+            
+            fullscreenContainer.appendChild(fullscreenVideo);
+            fullscreenContainer.appendChild(closeBtn);
+            document.body.appendChild(fullscreenContainer);
+            
+            fullscreenVideo.play().catch(error => {
+                console.log('Manual fullscreen video play failed:', error);
             });
         }
         
@@ -758,6 +929,23 @@
                     if (playIcon) {
                         playIcon.style.opacity = '0.8';
                         playIcon.style.transform = 'scale(1)';
+                    }
+                });
+                
+                // Touch events for mobile
+                container.addEventListener('touchstart', function() {
+                    if (playIcon) {
+                        playIcon.style.opacity = '1';
+                        playIcon.style.transform = 'scale(1.1)';
+                    }
+                });
+                
+                container.addEventListener('touchend', function() {
+                    if (playIcon) {
+                        setTimeout(() => {
+                            playIcon.style.opacity = '0.8';
+                            playIcon.style.transform = 'scale(1)';
+                        }, 200);
                     }
                 });
             });
