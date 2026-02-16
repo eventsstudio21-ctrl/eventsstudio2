@@ -23,12 +23,18 @@
     <!-- Translation System -->
     <script src="js/translations.js"></script>
     
+    <!-- Image Optimization Scripts -->
+    <script src="js/image-optimizer.js"></script>
+    <script src="js/image-thumbnails.js"></script>
+    <script src="js/progressive-loader.js"></script>
+    
     <!-- CSS Files -->
     <link rel="stylesheet" href="css/bootstrap-custom.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/portfolio.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/image-optimizer.css">
         
     <!-- Preload critical images -->
     <link rel="preload" as="image" href="assets/images/Photo.1.webp">
@@ -789,6 +795,198 @@
             }
         }
         
+        /* Mobile Gallery Optimization */
+        @media (max-width: 768px) {
+            .gallery-grid-modern {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+                padding: 1rem 0;
+            }
+            
+            .gallery-item-modern {
+                max-height: 180px;
+                border-radius: 6px;
+            }
+            
+            .gallery-overlay h3 {
+                font-size: 0.9rem !important;
+            }
+            
+            .gallery-overlay p {
+                font-size: 0.7rem !important;
+            }
+            
+            /* Mobile Slider Optimization */
+            .auto-slider {
+                margin: 1rem;
+                padding: 1rem;
+            }
+            
+            .slide {
+                height: 250px;
+            }
+            
+            .slide-content h3 {
+                font-size: 1.2rem !important;
+            }
+            
+            .slide-content p {
+                font-size: 0.8rem !important;
+            }
+            
+            .slider-nav {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
+            }
+            
+            .slider-prev {
+                left: 10px;
+            }
+            
+            .slider-next {
+                right: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .gallery-grid-modern {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.6rem;
+                padding: 0.8rem 0;
+            }
+            
+            .gallery-item-modern {
+                max-height: 160px;
+                border-radius: 4px;
+            }
+            
+            .gallery-overlay h3 {
+                font-size: 0.8rem !important;
+            }
+            
+            .gallery-overlay p {
+                font-size: 0.65rem !important;
+            }
+            
+            /* Mobile Slider - Small screens */
+            .auto-slider {
+                margin: 0.5rem;
+                padding: 0.5rem;
+            }
+            
+            .slide {
+                height: 200px;
+            }
+            
+            .slide-content {
+                padding: 1rem;
+            }
+            
+            .slide-content h3 {
+                font-size: 1rem !important;
+            }
+            
+            .slide-content p {
+                font-size: 0.7rem !important;
+            }
+            
+            .slider-nav {
+                width: 30px;
+                height: 30px;
+                font-size: 0.8rem;
+            }
+            
+            .slider-prev {
+                left: 5px;
+            }
+            
+            .slider-next {
+                right: 5px;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .gallery-grid-modern {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+                padding: 0.6rem 0;
+            }
+            
+            .gallery-item-modern {
+                max-height: 250px;
+                border-radius: 8px;
+            }
+            
+            .gallery-overlay h3 {
+                font-size: 1rem !important;
+            }
+            
+            .gallery-overlay p {
+                font-size: 0.8rem !important;
+            }
+            
+            /* Very small screens - Single column */
+            .auto-slider {
+                margin: 0.3rem;
+                padding: 0.3rem;
+            }
+            
+            .slide {
+                height: 180px;
+            }
+            
+            .slide-content {
+                padding: 0.8rem;
+            }
+            
+            .slide-content h3 {
+                font-size: 0.9rem !important;
+            }
+            
+            .slide-content p {
+                font-size: 0.6rem !important;
+            }
+        }
+        
+        /* Mobile Touch Optimization */
+        @media (max-width: 768px) {
+            .gallery-item-modern {
+                touch-action: manipulation;
+                -webkit-tap-highlight-color: transparent;
+            }
+            
+            .gallery-item-modern:active {
+                transform: scale(0.95);
+                transition: transform 0.1s ease;
+            }
+            
+            .slider-nav {
+                touch-action: manipulation;
+                -webkit-tap-highlight-color: transparent;
+            }
+            
+            .slider-nav:active {
+                transform: scale(0.9);
+                transition: transform 0.1s ease;
+            }
+        }
+        
+        /* Mobile Performance */
+        @media (max-width: 768px) {
+            .gallery-item-modern img {
+                transform: translateZ(0);
+                will-change: transform;
+                backface-visibility: hidden;
+            }
+            
+            .slide img {
+                transform: translateZ(0);
+                will-change: transform, opacity;
+                backface-visibility: hidden;
+            }
+        }
+        
         /* Full Screen Lightbox */
         .lightbox {
             display: none;
@@ -1006,178 +1204,192 @@
             <div class="auto-slider">
                 <!-- Valentine's Day Slides -->
                 <div class="slide active">
-                    <img src="assets/images/rsmval1.PNG"  alt="Valentine Romance">
+                    <img src="assets/images/1.jpg"  alt="Wedding Photography">
                     <div class="slide-content">
-                        <h3 data-translate="valentine_romance_title">Eternal Valentine's Romance</h3>
-                        <p data-translate="valentine_romance_desc">Where love stories become legends</p>
+                        <h3 data-translate="wedding_photography_1_title">Wedding Photography 1</h3>
+                        <p data-translate="wedding_photography_1_desc">Captured with artistic precision</p>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="assets/images/rsmval2.PNG"  alt="Valentine Heart">
+                    <img src="assets/images/2.jpg"  alt="Wedding Photography">
                     <div class="slide-content">
-                        <h3 data-translate="hearts_united_title">Hearts United Forever</h3>
-                        <p data-translate="hearts_united_desc">Two souls, one destiny</p>
+                        <h3 data-translate="wedding_photography_2_title">Wedding Photography 2</h3>
+                        <p data-translate="wedding_photography_2_desc">Love story moments</p>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="assets/images/rsmval3.PNG"  alt="Valentine Couple">
+                    <img src="assets/images/3.jpg"  alt="Wedding Photography">
                     <div class="slide-content">
-                        <h3 data-translate="sacred_valentine_title">Sacred Valentine Bond</h3>
-                        <p data-translate="sacred_valentine_desc">Love's eternal promise</p>
+                        <h3 data-translate="wedding_photography_3_title">Wedding Photography 3</h3>
+                        <p data-translate="wedding_photography_3_desc">Celebration memories</p>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="assets/images/2.jpg"  alt="Dreamy Portraits">
+                    <img src="assets/images/4.jpg"  alt="Wedding Photography">
                     <div class="slide-content">
-                        <h3 data-translate="dreamy_portraits_title">Dreamy Portraits</h3>
-                        <p data-translate="dreamy_portraits_desc">Where dreams meet reality</p>
+                        <h3 data-translate="wedding_photography_4_title">Wedding Photography 4</h3>
+                        <p data-translate="wedding_photography_4_desc">Intimate moments</p>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="assets/images/1.jpg"  alt="Intimate Moments">
+                    <img src="assets/images/5.jpg"  alt="Wedding Photography">
                     <div class="slide-content">
-                        <h3 data-translate="intimate_moments_title">Intimate Moments</h3>
-                        <p data-translate="intimate_moments_desc">Whispers of the heart</p>
+                        <h3 data-translate="wedding_photography_5_title">Wedding Photography 5</h3>
+                        <p data-translate="wedding_photography_5_desc">Artistic portraits</p>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="assets/images/2.jpg"  alt="Artistic Portrait">
+                    <img src="assets/images/6.jpg"  alt="Wedding Photography">
                     <div class="slide-content">
-                        <h3 data-translate="artistic_portrait_title">Artistic Portrait</h3>
-                        <p data-translate="artistic_portrait_desc">Beauty captured in time</p>
+                        <h3 data-translate="wedding_photography_6_title">Wedding Photography 6</h3>
+                        <p data-translate="wedding_photography_6_desc">Candid emotions</p>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="assets/images/3.jpg"  alt="Candid Moments">
+                    <img src="assets/images/7.jpg"  alt="Wedding Photography">
                     <div class="slide-content">
-                        <h3 data-translate="candid_moments_title">Candid Moments</h3>
-                        <p data-translate="candid_moments_desc">Pure emotions unveiled</p>
+                        <h3 data-translate="wedding_photography_7_title">Wedding Photography 7</h3>
+                        <p data-translate="wedding_photography_7_desc">Romantic glow</p>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="assets/images/4.jpg"  alt="Romantic Glow">
+                    <img src="assets/images/8.jpg"  alt="Wedding Photography">
                     <div class="slide-content">
-                        <h3 data-translate="romantic_glow_title">Romantic Glow</h3>
-                        <p data-translate="romantic_glow_desc">Love's gentle radiance</p>
+                        <h3 data-translate="wedding_photography_8_title">Wedding Photography 8</h3>
+                        <p data-translate="wedding_photography_8_desc">Celebration joy</p>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="assets/images/5.jpg"  alt="Celebration Joy">
+                    <img src="assets/images/9.jpg"  alt="Wedding Photography">
                     <div class="slide-content">
-                        <h3 data-translate="celebration_joy_title">Celebration Joy</h3>
-                        <p data-translate="celebration_joy_desc">Happiness in full bloom</p>
+                        <h3 data-translate="wedding_photography_9_title">Wedding Photography 9</h3>
+                        <p data-translate="wedding_photography_9_desc">Dreamy romance</p>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="assets/images/6.jpg"  alt="Dreamy Romance">
+                    <img src="assets/images/10.jpg"  alt="Wedding Photography">
                     <div class="slide-content">
-                        <h3 data-translate="dreamy_romance_title">Dreamy Romance</h3>
-                        <p data-translate="dreamy_romance_desc">Fairytale moments real</p>
+                        <h3 data-translate="wedding_photography_10_title">Wedding Photography 10</h3>
+                        <p data-translate="wedding_photography_10_desc">Sacred union</p>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="assets/images/7.jpg"  alt="Sacred Union">
+                    <img src="assets/images/11.jpg"  alt="Wedding Photography">
                     <div class="slide-content">
-                        <h3 data-translate="sacred_union_title">Sacred Union</h3>
-                        <p data-translate="sacred_union_desc">Divine celebration</p>
+                        <h3 data-translate="wedding_photography_11_title">Wedding Photography 11</h3>
+                        <p data-translate="wedding_photography_11_desc">Eternal love</p>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="assets/images/10.jpg"  alt="Sacred Vows">
+                    <img src="assets/images/12.jpg"  alt="Wedding Photography">
                     <div class="slide-content">
-                        <h3 data-translate="sacred_vows_title">Sacred Vows</h3>
-                        <p data-translate="sacred_vows_desc">Promises of forever</p>
+                        <h3 data-translate="wedding_photography_12_title">Wedding Photography 12</h3>
+                        <p data-translate="wedding_photography_12_desc">Bridal glow</p>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="assets/images/11.jpg"  alt="Heavenly Light">
+                    <img src="assets/images/13.jpg"  alt="Wedding Photography">
                     <div class="slide-content">
-                        <h3 data-translate="heavenly_light_title">Heavenly Light</h3>
-                        <p data-translate="heavenly_light_desc">Divine illumination</p>
+                        <h3 data-translate="wedding_photography_13_title">Wedding Photography 13</h3>
+                        <p data-translate="wedding_photography_13_desc">Sacred vows</p>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="assets/images/12.jpg"  alt="Sacred Ceremony">
+                    <img src="assets/images/14.jpg"  alt="Wedding Photography">
                     <div class="slide-content">
-                        <h3 data-translate="sacred_ceremony_title">Sacred Ceremony</h3>
-                        <p data-translate="sacred_ceremony_desc">Holy matrimony celebrated beautifully</p>
+                        <h3 data-translate="wedding_photography_14_title">Wedding Photography 14</h3>
+                        <p data-translate="wedding_photography_14_desc">Heavenly light</p>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="assets/images/13.jpg"  alt="Eternal Bliss">
+                    <img src="assets/images/15.jpg"  alt="Wedding Photography">
                     <div class="slide-content">
-                        <h3 data-translate="eternal_bliss_title">Eternal Bliss</h3>
-                        <p data-translate="eternal_bliss_desc">Perfect harmony in love's journey</p>
+                        <h3 data-translate="wedding_photography_15_title">Wedding Photography 15</h3>
+                        <p data-translate="wedding_photography_15_desc">Sacred ceremony</p>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="assets/images/14.jpg"  alt="Sacred Journey">
+                    <img src="assets/images/1.jpg"  alt="Wedding Photography">
                     <div class="slide-content">
-                        <h3 data-translate="sacred_journey_title">Sacred Journey</h3>
-                        <p data-translate="sacred_journey_desc">Path of love illuminated brightly</p>
+                        <h3 data-translate="wedding_photography_16_title">Wedding Photography 16</h3>
+                        <p data-translate="wedding_photography_16_desc">Heavenly blessing</p>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="assets/images/15.jpg"  alt="Divine Union">
+                    <img src="assets/images/2.jpg"  alt="Wedding Photography">
                     <div class="slide-content">
-                        <h3 data-translate="divine_union_title">Divine Union</h3>
-                        <p data-translate="divine_union_desc">Celestial connection blessed above</p>
+                        <h3 data-translate="wedding_photography_17_title">Wedding Photography 17</h3>
+                        <p data-translate="wedding_photography_17_desc">Special moment 1</p>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="assets/images/rsm1.PNG"  alt="Special Moment 1">
+                    <img src="assets/images/3.jpg"  alt="Wedding Photography">
                     <div class="slide-content">
-                        <h3 >Special Moment 1</h3>
-                        <p >Captured memories forever</p>
+                        <h3 data-translate="wedding_photography_18_title">Wedding Photography 18</h3>
+                        <p data-translate="wedding_photography_18_desc">Special moment 2</p>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="assets/images/rsm8.jpg"  alt="Special Moment 8">
+                    <img src="assets/images/4.jpg"  alt="Wedding Photography">
                     <div class="slide-content">
-                        <h3 >Special Moment 8</h3>
-                        <p >Extraordinary moments</p>
+                        <h3 data-translate="wedding_photography_19_title">Wedding Photography 19</h3>
+                        <p data-translate="wedding_photography_19_desc">Special moment 3</p>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="assets/images/rsm2.PNG"  alt="Special Moment 2">
+                    <img src="assets/images/20.jpg"  alt="Wedding Photography">
                     <div class="slide-content">
-                        <h3 >Special Moment 2</h3>
-                        <p >Timeless elegance</p>
+                        <h3 data-translate="wedding_photography_20_title">Wedding Photography 20</h3>
+                        <p data-translate="wedding_photography_20_desc">Heavenly blessing</p>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="assets/images/rsm3u.jpg"  alt="Special Moment 3">
+                    <img src="assets/images/21.jpg"  alt="Wedding Photography">
                     <div class="slide-content">
-                        <h3 >Special Moment 3</h3>
-                        <p >Artistic perfection</p>
+                        <h3 data-translate="wedding_photography_21_title">Wedding Photography 21</h3>
+                        <p data-translate="wedding_photography_21_desc">Special moment 4</p>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="assets/images/rsm5.PNG"  alt="Special Moment 5">
+                    <img src="assets/images/22.jpg"  alt="Wedding Photography">
                     <div class="slide-content">
-                        <h3 >Special Moment 5</h3>
-                        <p >Beautiful memories</p>
+                        <h3 data-translate="wedding_photography_22_title">Wedding Photography 22</h3>
+                        <p data-translate="wedding_photography_22_desc">Special moment 5</p>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="assets/images/rsm4.PNG"  alt="Special Moment 4">
+                    <img src="assets/images/23.jpg"  alt="Wedding Photography">
                     <div class="slide-content">
-                        <h3 >Special Moment 4</h3>
-                        <p >Emotional moments</p>
+                        <h3 data-translate="wedding_photography_23_title">Wedding Photography 23</h3>
+                        <p data-translate="wedding_photography_23_desc">Special moment 6</p>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="assets/images/rsm6u.jpg"  alt="Special Moment 6">
+                    <img src="assets/images/24.jpg"  alt="Wedding Photography">
                     <div class="slide-content">
-                        <h3 >Special Moment 6</h3>
-                        <p >Perfect moments</p>
+                        <h3 data-translate="wedding_photography_24_title">Wedding Photography 24</h3>
+                        <p data-translate="wedding_photography_24_desc">Special moment 7</p>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="assets/images/rsm7.PNG"  alt="Special Moment 7">
+                    <img src="assets/images/25.jpg"  alt="Wedding Photography">
                     <div class="slide-content">
-                        <h3 >Special Moment 7</h3>
-                        <p >Unforgettable memories</p>
+                        <h3 data-translate="wedding_photography_25_title">Wedding Photography 25</h3>
+                        <p data-translate="wedding_photography_25_desc">Special moment 8</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="assets/images/26.jpg"  alt="Wedding Photography">
+                    <div class="slide-content">
+                        <h3 data-translate="wedding_photography_26_title">Wedding Photography 26</h3>
+                        <p data-translate="wedding_photography_26_desc">Special moment 9</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="assets/images/27.jpg"  alt="Wedding Photography">
+                    <div class="slide-content">
+                        <h3 data-translate="wedding_photography_27_title">Wedding Photography 27</h3>
+                        <p data-translate="wedding_photography_27_desc">Special moment 10</p>
                     </div>
                 </div>
                 
@@ -1190,228 +1402,229 @@
             <div class="gallery-grid-modern">
                 <!-- Valentine's Day Gallery Items -->
                 <div class="gallery-item-modern">
-                    <img src="assets/images/rsmval1.PNG"  alt="Valentine Romance" loading="lazy">
+                    <img src="assets/images/1.jpg"  alt="Wedding Photography 1" loading="lazy">
                     <div class="gallery-overlay">
-                        <h3 >Eternal Valentine's Romance</h3>
-                        <p >Where love stories become legends</p>
+                        <h3 data-translate="wedding_photography_1_title">Wedding Photography 1</h3>
+                        <p data-translate="wedding_photography_1_desc">Captured with artistic precision</p>
                     </div>
                 </div>
                 
                 <div class="gallery-item-modern">
-                    <img src="assets/images/rsmval2.PNG"  alt="Valentine Heart" loading="lazy">
+                    <img src="assets/images/2.jpg"  alt="Wedding Photography 2" loading="lazy">
                     <div class="gallery-overlay">
-                        <h3 >Hearts United Forever</h3>
-                        <p >Two souls, one destiny</p>
+                        <h3 data-translate="wedding_photography_2_title">Wedding Photography 2</h3>
+                        <p data-translate="wedding_photography_2_desc">Love story moments</p>
                     </div>
                 </div>
                 
                 <div class="gallery-item-modern">
-                    <img src="assets/images/rsmval3.PNG"  alt="Valentine Couple" loading="lazy">
+                    <img src="assets/images/3.jpg"  alt="Wedding Photography 3" loading="lazy">
                     <div class="gallery-overlay">
-                        <h3 >Sacred Valentine Bond</h3>
-                        <p >Love's eternal promise</p>
+                        <h3 data-translate="wedding_photography_3_title">Wedding Photography 3</h3>
+                        <p data-translate="wedding_photography_3_desc">Celebration memories</p>
                     </div>
                 </div>
                 
                 <div class="gallery-item-modern">
-                    <img src="assets/images/1.jpg"  alt="Wedding Photography" loading="lazy">
+                    <img src="assets/images/4.jpg"  alt="Wedding Photography 4" loading="lazy">
                     <div class="gallery-overlay">
-                        <h3 >Wedding Moments</h3>
-                        <p >Captured with artistic precision</p>
+                        <h3 data-translate="wedding_photography_4_title">Wedding Photography 4</h3>
+                        <p data-translate="wedding_photography_4_desc">Intimate moments</p>
                     </div>
                 </div>
                 
                 <div class="gallery-item-modern">
-                    <img src="assets/images/2.jpg"  alt="Wedding Photography" loading="lazy">
+                    <img src="assets/images/5.jpg"  alt="Wedding Photography 5" loading="lazy">
                     <div class="gallery-overlay">
-                        <h3 >Love Story</h3>
-                        <p >Every moment matters</p>
+                        <h3 data-translate="wedding_photography_5_title">Wedding Photography 5</h3>
+                        <p data-translate="wedding_photography_5_desc">Artistic portraits</p>
                     </div>
                 </div>
                 
                 <div class="gallery-item-modern">
-                    <img src="assets/images/3.jpg"  alt="Wedding Photography" loading="lazy">
+                    <img src="assets/images/6.jpg"  alt="Wedding Photography 6" loading="lazy">
                     <div class="gallery-overlay">
-                        <h3 >Celebration</h3>
-                        <p >Joyful memories forever</p>
+                        <h3 data-translate="wedding_photography_6_title">Wedding Photography 6</h3>
+                        <p data-translate="wedding_photography_6_desc">Candid emotions</p>
                     </div>
                 </div>
                 
                 <div class="gallery-item-modern">
-                    <img src="assets/images/4.jpg"  alt="Wedding Photography" loading="lazy">
+                    <img src="assets/images/7.jpg" alt="Wedding Photography 7" loading="lazy">
                     <div class="gallery-overlay">
-                        <h3 >Intimate Moments</h3>
-                        <p >Captured emotions</p>
+                        <h3 data-translate="wedding_photography_7_title">Wedding Photography 7</h3>
+                        <p data-translate="wedding_photography_7_desc">Romantic glow</p>
                     </div>
                 </div>
                 
                 <div class="gallery-item-modern">
-                    <img src="assets/images/5.jpg"  alt="Wedding Photography" loading="lazy">
+                    <img src="assets/images/8.jpg" alt="Wedding Photography 8" loading="lazy">
                     <div class="gallery-overlay">
-                        <h3 >Artistic Portrait</h3>
-                        <p >Timeless elegance captured</p>
+                        <h3 data-translate="wedding_photography_8_title">Wedding Photography 8</h3>
+                        <p data-translate="wedding_photography_8_desc">Celebration joy</p>
                     </div>
                 </div>
                 
                 <div class="gallery-item-modern">
-                    <img src="assets/images/6.jpg"  alt="Wedding Photography" loading="lazy">
+                    <img src="assets/images/9.jpg" alt="Wedding Photography 9" loading="lazy">
                     <div class="gallery-overlay">
-                        <h3 >Candid Moments</h3>
-                        <p >Natural emotions preserved</p>
+                        <h3 data-translate="wedding_photography_9_title">Wedding Photography 9</h3>
+                        <p data-translate="wedding_photography_9_desc">Dreamy romance</p>
                     </div>
                 </div>
                 
                 <div class="gallery-item-modern">
-                    <img src="assets/images/7.jpg" alt="Wedding Photography" loading="lazy">
+                    <img src="assets/images/10.jpg" alt="Wedding Photography 10" loading="lazy">
                     <div class="gallery-overlay">
-                        <h3 >Romantic Glow</h3>
-                        <p >Golden hour perfection</p>
+                        <h3 data-translate="wedding_photography_10_title">Wedding Photography 10</h3>
+                        <p data-translate="wedding_photography_10_desc">Sacred union</p>
                     </div>
                 </div>
                 
                 <div class="gallery-item-modern">
-                    <img src="assets/images/8.jpg" alt="Wedding Photography" loading="lazy">
+                    <img src="assets/images/11.jpg" alt="Wedding Photography 11" loading="lazy">
                     <div class="gallery-overlay">
-                        <h3 >Celebration Joy</h3>
-                        <p >Festive moments forever</p>
+                        <h3 data-translate="wedding_photography_11_title">Wedding Photography 11</h3>
+                        <p data-translate="wedding_photography_11_desc">Eternal love</p>
                     </div>
                 </div>
                 
                 <div class="gallery-item-modern">
-                    <img src="assets/images/9.jpg" alt="Wedding Photography" loading="lazy">
+                    <img src="assets/images/12.jpg" alt="Wedding Photography 12" loading="lazy">
                     <div class="gallery-overlay">
-                        <h3 >Dreamy Romance</h3>
-                        <p >Fairytale moments real</p>
+                        <h3 data-translate="wedding_photography_12_title">Wedding Photography 12</h3>
+                        <p data-translate="wedding_photography_12_desc">Bridal glow</p>
                     </div>
                 </div>
                 
                 <div class="gallery-item-modern">
-                    <img src="assets/images/10.jpg" alt="Wedding Photography" loading="lazy">
+                    <img src="assets/images/13.jpg" alt="Wedding Photography 13" loading="lazy">
                     <div class="gallery-overlay">
-                        <h3 >Sacred Union</h3>
-                        <p >Divine celebration</p>
+                        <h3 data-translate="wedding_photography_13_title">Wedding Photography 13</h3>
+                        <p data-translate="wedding_photography_13_desc">Sacred vows</p>
                     </div>
                 </div>
                 
                 <div class="gallery-item-modern">
-                    <img src="assets/images/11.jpg" alt="Wedding Photography" loading="lazy">
+                    <img src="assets/images/14.jpg" alt="Wedding Photography 14" loading="lazy">
                     <div class="gallery-overlay">
-                        <h3 >Eternal Love</h3>
-                        <p >Forever begins here</p>
+                        <h3 data-translate="wedding_photography_14_title">Wedding Photography 14</h3>
+                        <p data-translate="wedding_photography_14_desc">Heavenly light</p>
                     </div>
                 </div>
                 
                 <div class="gallery-item-modern">
-                    <img src="assets/images/12.jpg" alt="Wedding Photography" loading="lazy">
+                    <img src="assets/images/15.jpg" alt="Wedding Photography 15" loading="lazy">
                     <div class="gallery-overlay">
-                        <h3 >Bridal Glow</h3>
-                        <p >Radiant beauty shines</p>
+                        <h3 data-translate="wedding_photography_15_title">Wedding Photography 15</h3>
+                        <p data-translate="wedding_photography_15_desc">Sacred ceremony</p>
                     </div>
                 </div>
                 
                 <div class="gallery-item-modern">
-                    <img src="assets/images/13.jpg" alt="Wedding Photography" loading="lazy">
+                    <img src="assets/images/1.jpg"  alt="Wedding Photography 16" loading="lazy">
                     <div class="gallery-overlay">
-                        <h3 >Sacred Vows</h3>
-                        <p >Promises of forever</p>
+                        <h3 data-translate="wedding_photography_16_title">Wedding Photography 16</h3>
+                        <p data-translate="wedding_photography_16_desc">Heavenly blessing</p>
                     </div>
                 </div>
                 
                 <div class="gallery-item-modern">
-                    <img src="assets/images/14.jpg" alt="Wedding Photography" loading="lazy">
+                    <img src="assets/images/2.jpg"  alt="Wedding Photography 17" loading="lazy">
                     <div class="gallery-overlay">
-                        <h3 >Heavenly Light</h3>
-                        <p >Divine illumination</p>
+                        <h3 data-translate="wedding_photography_17_title">Wedding Photography 17</h3>
+                        <p data-translate="wedding_photography_17_desc">Special moment 1</p>
                     </div>
                 </div>
                 
                 <div class="gallery-item-modern">
-                    <img src="assets/images/15.jpg" alt="Wedding Photography" loading="lazy">
+                    <img src="assets/images/3.jpg"  alt="Wedding Photography 18" loading="lazy">
                     <div class="gallery-overlay">
-                        <h3 >Sacred Ceremony</h3>
-                        <p >Holy matrimony</p>
+                        <h3 data-translate="wedding_photography_18_title">Wedding Photography 18</h3>
+                        <p data-translate="wedding_photography_18_desc">Special moment 2</p>
                     </div>
                 </div>
                 
                 <div class="gallery-item-modern">
-                    <img src="assets/images/20.jpg" alt="Wedding Photography" loading="lazy">
+                    <img src="assets/images/4.jpg"  alt="Wedding Photography 19" loading="lazy">
                     <div class="gallery-overlay">
-                        <h3 >Heavenly Blessing</h3>
-                        <p >Divine favor</p>
+                        <h3 data-translate="wedding_photography_19_title">Wedding Photography 19</h3>
+                        <p data-translate="wedding_photography_19_desc">Special moment 3</p>
                     </div>
                 </div>
                 
                 <div class="gallery-item-modern">
-                    <img src="assets/images/rsm1.PNG" alt="Special Moment 1" loading="lazy">
+                    <img src="assets/images/20.jpg" alt="Wedding Photography 20" loading="lazy">
                     <div class="gallery-overlay">
-                        <h3 >Special Moment 1</h3>
-                        <p >Captured memories forever</p>
+                        <h3 data-translate="wedding_photography_20_title">Wedding Photography 20</h3>
+                        <p data-translate="wedding_photography_20_desc">Heavenly blessing</p>
                     </div>
                 </div>
                 
                 <div class="gallery-item-modern">
-                    <img src="assets/images/rsm2.PNG" alt="Special Moment 2" loading="lazy">
+                    <img src="assets/images/21.jpg" alt="Wedding Photography 21" loading="lazy">
                     <div class="gallery-overlay">
-                        <h3 >Special Moment 2</h3>
-                        <p >Timeless elegance</p>
+                        <h3 data-translate="wedding_photography_21_title">Wedding Photography 21</h3>
+                        <p data-translate="wedding_photography_21_desc">Special moment 4</p>
                     </div>
                 </div>
                 
                 <div class="gallery-item-modern">
-                    <img src="assets/images/rsm8.jpg" alt="Special Moment 8" loading="lazy">
+                    <img src="assets/images/22.jpg" alt="Wedding Photography 22" loading="lazy">
                     <div class="gallery-overlay">
-                        <h3 >Special Moment 8</h3>
-                        <p >Extraordinary moments</p>
+                        <h3 data-translate="wedding_photography_22_title">Wedding Photography 22</h3>
+                        <p data-translate="wedding_photography_22_desc">Special moment 5</p>
                     </div>
                 </div>
                 
                 <div class="gallery-item-modern">
-                    <img src="assets/images/rsm3u.jpg" alt="Special Moment 3" loading="lazy">
+                    <img src="assets/images/23.jpg" alt="Wedding Photography 23" loading="lazy">
                     <div class="gallery-overlay">
-                        <h3 >Special Moment 3</h3>
-                        <p >Artistic perfection</p>
+                        <h3 data-translate="wedding_photography_23_title">Wedding Photography 23</h3>
+                        <p data-translate="wedding_photography_23_desc">Special moment 6</p>
                     </div>
                 </div>
                 
                 <div class="gallery-item-modern">
-                    <img src="assets/images/rsm5.PNG" alt="Special Moment 5" loading="lazy">
+                    <img src="assets/images/24.jpg" alt="Wedding Photography 24" loading="lazy">
                     <div class="gallery-overlay">
-                        <h3 >Special Moment 5</h3>
-                        <p >Beautiful memories</p>
+                        <h3 data-translate="wedding_photography_24_title">Wedding Photography 24</h3>
+                        <p data-translate="wedding_photography_24_desc">Special moment 7</p>
                     </div>
                 </div>
                 
                 <div class="gallery-item-modern">
-                    <img src="assets/images/rsm4.PNG" alt="Special Moment 4" loading="lazy">
+                    <img src="assets/images/25.jpg" alt="Wedding Photography 25" loading="lazy">
                     <div class="gallery-overlay">
-                        <h3 >Special Moment 4</h3>
-                        <p >Emotional moments</p>
+                        <h3 data-translate="wedding_photography_25_title">Wedding Photography 25</h3>
+                        <p data-translate="wedding_photography_25_desc">Special moment 8</p>
                     </div>
                 </div>
                 
                 <div class="gallery-item-modern">
-                    <img src="assets/images/rsm6u.jpg" alt="Special Moment 6" loading="lazy">
+                    <img src="assets/images/26.jpg" alt="Wedding Photography 26" loading="lazy">
                     <div class="gallery-overlay">
-                        <h3 >Special Moment 6</h3>
-                        <p >Perfect moments</p>
+                        <h3 data-translate="wedding_photography_26_title">Wedding Photography 26</h3>
+                        <p data-translate="wedding_photography_26_desc">Special moment 9</p>
                     </div>
                 </div>
             </div>
             
-            <!-- Centered Last Photo -->
+            <!-- Centered Final Photo -->
             <div class="row justify-content-center mt-4">
                 <div class="col-lg-3 col-md-4 col-6">
                     <div class="gallery-item-modern">
-                        <img src="assets/images/rsm7.PNG" alt="Special Moment 7" loading="lazy">
+                        <img src="assets/images/27.jpg" alt="Wedding Photography 27" loading="lazy">
                         <div class="gallery-overlay">
-                            <h3 >Special Moment 7</h3>
-                            <p >Unforgettable memories</p>
+                            <h3 data-translate="wedding_photography_27_title">Wedding Photography 27</h3>
+                            <p data-translate="wedding_photography_27_desc">The perfect ending</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+         
 
     <!-- Overlay Backdrop -->
     <div class="overlay-backdrop" id="overlayBackdrop" onclick="closeExpanded()"></div>
@@ -1499,10 +1712,185 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/script.js"></script>
     
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then((registration) => {
+                        console.log('Service Worker registered successfully:', registration);
+                    })
+                    .catch((error) => {
+                        console.log('Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+    
     <!-- Fixed Slider and Gallery JavaScript -->
     <script>
         // Wait for DOM to be fully loaded
         document.addEventListener('DOMContentLoaded', function() {
+            // Translation support for Arabic
+            const translations = {
+                en: {
+                    wedding_photography_1_title: "Wedding Photography 1",
+                    wedding_photography_1_desc: "Captured with artistic precision",
+                    wedding_photography_2_title: "Wedding Photography 2",
+                    wedding_photography_2_desc: "Love story moments",
+                    wedding_photography_3_title: "Wedding Photography 3",
+                    wedding_photography_3_desc: "Celebration memories",
+                    wedding_photography_4_title: "Wedding Photography 4",
+                    wedding_photography_4_desc: "Intimate moments",
+                    wedding_photography_5_title: "Wedding Photography 5",
+                    wedding_photography_5_desc: "Artistic portraits",
+                    wedding_photography_6_title: "Wedding Photography 6",
+                    wedding_photography_6_desc: "Candid emotions",
+                    wedding_photography_7_title: "Wedding Photography 7",
+                    wedding_photography_7_desc: "Romantic glow",
+                    wedding_photography_8_title: "Wedding Photography 8",
+                    wedding_photography_8_desc: "Celebration joy",
+                    wedding_photography_9_title: "Wedding Photography 9",
+                    wedding_photography_9_desc: "Dreamy romance",
+                    wedding_photography_10_title: "Wedding Photography 10",
+                    wedding_photography_10_desc: "Sacred union",
+                    wedding_photography_11_title: "Wedding Photography 11",
+                    wedding_photography_11_desc: "Eternal love",
+                    wedding_photography_12_title: "Wedding Photography 12",
+                    wedding_photography_12_desc: "Bridal glow",
+                    wedding_photography_13_title: "Wedding Photography 13",
+                    wedding_photography_13_desc: "Sacred vows",
+                    wedding_photography_14_title: "Wedding Photography 14",
+                    wedding_photography_14_desc: "Heavenly light",
+                    wedding_photography_15_title: "Wedding Photography 15",
+                    wedding_photography_15_desc: "Sacred ceremony",
+                    wedding_photography_16_title: "Wedding Photography 16",
+                    wedding_photography_16_desc: "Heavenly blessing",
+                    wedding_photography_17_title: "Wedding Photography 17",
+                    wedding_photography_17_desc: "Special moment 1",
+                    wedding_photography_18_title: "Wedding Photography 18",
+                    wedding_photography_18_desc: "Special moment 2",
+                    wedding_photography_19_title: "Wedding Photography 19",
+                    wedding_photography_19_desc: "Special moment 3",
+                    wedding_photography_20_title: "Wedding Photography 20",
+                    wedding_photography_20_desc: "Heavenly blessing",
+                    wedding_photography_21_title: "Wedding Photography 21",
+                    wedding_photography_21_desc: "Special moment 4",
+                    wedding_photography_22_title: "Wedding Photography 22",
+                    wedding_photography_22_desc: "Special moment 5",
+                    wedding_photography_23_title: "Wedding Photography 23",
+                    wedding_photography_23_desc: "Special moment 6",
+                    wedding_photography_24_title: "Wedding Photography 24",
+                    wedding_photography_24_desc: "Special moment 7",
+                    wedding_photography_25_title: "Wedding Photography 25",
+                    wedding_photography_25_desc: "Special moment 8",
+                    wedding_photography_26_title: "Wedding Photography 26",
+                    wedding_photography_26_desc: "Special moment 9",
+                    wedding_photography_27_title: "Wedding Photography 27",
+                    wedding_photography_27_desc: "Special moment 10",
+                    wedding_photography_28_title: "Wedding Photography 28",
+                    wedding_photography_28_desc: "Special moment 11",
+                    wedding_photography_29_title: "Wedding Photography 29",
+                    wedding_photography_29_desc: "Special moment 12",
+                    wedding_photography_30_title: "Wedding Photography 30",
+                    wedding_photography_30_desc: "Special moment 13",
+                    wedding_photography_31_title: "Wedding Photography 31",
+                    wedding_photography_31_desc: "The perfect ending"
+                },
+                ar: {
+                    wedding_photography_1_title: "تصوير زفاف 1",
+                    wedding_photography_1_desc: "التقطت بدقة فنية",
+                    wedding_photography_2_title: "تصوير زفاف 2",
+                    wedding_photography_2_desc: "لحظات قصة الحب",
+                    wedding_photography_3_title: "تصوير زفاف 3",
+                    wedding_photography_3_desc: "ذكريات الاحتفال",
+                    wedding_photography_4_title: "تصوير زفاف 4",
+                    wedding_photography_4_desc: "لحظات حميمة",
+                    wedding_photography_5_title: "تصوير زفاف 5",
+                    wedding_photography_5_desc: "بورتريهات فنية",
+                    wedding_photography_6_title: "تصوير زفاف 6",
+                    wedding_photography_6_desc: "عواطف تلقائية",
+                    wedding_photography_7_title: "تصوير زفاف 7",
+                    wedding_photography_7_desc: "وهج رومانسي",
+                    wedding_photography_8_title: "تصوير زفاف 8",
+                    wedding_photography_8_desc: "بهجة الاحتفال",
+                    wedding_photography_9_title: "تصوير زفاف 9",
+                    wedding_photography_9_desc: "رومانسية حالمة",
+                    wedding_photography_10_title: "تصوير زفاف 10",
+                    wedding_photography_10_desc: "اتحاد مقدس",
+                    wedding_photography_11_title: "تصوير زفاف 11",
+                    wedding_photography_11_desc: "حب أبدي",
+                    wedding_photography_12_title: "تصوير زفاف 12",
+                    wedding_photography_12_desc: "توهج العروس",
+                    wedding_photography_13_title: "تصوير زفاف 13",
+                    wedding_photography_13_desc: "نذور مقدسة",
+                    wedding_photography_14_title: "تصوير زفاف 14",
+                    wedding_photography_14_desc: "نور سماوي",
+                    wedding_photography_15_title: "تصوير زفاف 15",
+                    wedding_photography_15_desc: "حفل مقدس",
+                    wedding_photography_16_title: "تصوير زفاف 16",
+                    wedding_photography_16_desc: "بركة سماوية",
+                    wedding_photography_17_title: "تصوير زفاف 17",
+                    wedding_photography_17_desc: "لحظة خاصة 1",
+                    wedding_photography_18_title: "تصوير زفاف 18",
+                    wedding_photography_18_desc: "لحظة خاصة 2",
+                    wedding_photography_19_title: "تصوير زفاف 19",
+                    wedding_photography_19_desc: "لحظة خاصة 3",
+                    wedding_photography_20_title: "تصوير زفاف 20",
+                    wedding_photography_20_desc: "بركة سماوية",
+                    wedding_photography_21_title: "تصوير زفاف 21",
+                    wedding_photography_21_desc: "لحظة خاصة 4",
+                    wedding_photography_22_title: "تصوير زفاف 22",
+                    wedding_photography_22_desc: "لحظة خاصة 5",
+                    wedding_photography_23_title: "تصوير زفاف 23",
+                    wedding_photography_23_desc: "لحظة خاصة 6",
+                    wedding_photography_24_title: "تصوير زفاف 24",
+                    wedding_photography_24_desc: "لحظة خاصة 7",
+                    wedding_photography_25_title: "تصوير زفاف 25",
+                    wedding_photography_25_desc: "لحظة خاصة 8",
+                    wedding_photography_26_title: "تصوير زفاف 26",
+                    wedding_photography_26_desc: "لحظة خاصة 9",
+                    wedding_photography_27_title: "تصوير زفاف 27",
+                    wedding_photography_27_desc: "لحظة خاصة 10",
+                    wedding_photography_28_title: "تصوير زفاف 28",
+                    wedding_photography_28_desc: "لحظة خاصة 11",
+                    wedding_photography_29_title: "تصوير زفاف 29",
+                    wedding_photography_29_desc: "لحظة خاصة 12",
+                    wedding_photography_30_title: "تصوير زفاف 30",
+                    wedding_photography_30_desc: "لحظة خاصة 13",
+                    wedding_photography_31_title: "تصوير زفاف 31",
+                    wedding_photography_31_desc: "النهاية المثالية"
+                }
+            };
+
+            // Function to update text based on language
+            function updateLanguage(lang) {
+                document.querySelectorAll('[data-translate]').forEach(element => {
+                    const key = element.getAttribute('data-translate');
+                    if (translations[lang] && translations[lang][key]) {
+                        element.textContent = translations[lang][key];
+                    }
+                });
+            }
+
+            // Detect language from HTML lang attribute or default to English
+            const currentLang = document.documentElement.lang || 'en';
+            updateLanguage(currentLang);
+
+            // Listen for language changes
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'lang') {
+                        updateLanguage(document.documentElement.lang);
+                    }
+                });
+            });
+
+            observer.observe(document.documentElement, {
+                attributes: true,
+                attributeFilter: ['lang']
+            });
+            
             // Slider Variables
             let currentSlide = 0;
             const slides = document.querySelectorAll('.slide');
@@ -1631,4 +2019,3 @@
     <script src="js/background-music.js"></script>
 </body>
 </html>
-

@@ -1,0 +1,226 @@
+/**
+ * Image Optimization CSS for Events Studio
+ * Provides smooth loading transitions and blur-up effects
+ */
+
+/* Base image loading styles */
+img[data-lazy] {
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+img[data-lazy].loaded {
+    opacity: 1;
+}
+
+/* Progressive loading blur-up effect */
+img[data-progressive] {
+    filter: blur(10px);
+    transform: scale(1.05);
+    transition: filter 0.6s ease-out, transform 0.6s ease-out;
+}
+
+img[data-progressive].loaded {
+    filter: blur(0);
+    transform: scale(1);
+}
+
+/* Loading skeleton for images */
+.image-skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading-shimmer 1.5s infinite;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.image-skeleton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.5) 50%, transparent 70%);
+    animation: loading-shine 2s infinite;
+}
+
+@keyframes loading-shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes loading-shine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Gallery item loading states */
+.gallery-item-modern {
+    position: relative;
+    overflow: hidden;
+}
+
+.gallery-item-modern .image-skeleton {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.gallery-item-modern img {
+    position: relative;
+    z-index: 2;
+}
+
+/* Slider image loading optimization */
+.slide img {
+    transition: transform 0.6s ease, filter 0.6s ease;
+}
+
+.slide img.loading {
+    filter: blur(2px) brightness(0.9);
+}
+
+.slide img.loaded {
+    filter: none;
+}
+
+/* Lightbox image optimization */
+.lightbox img {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.lightbox img.loading {
+    opacity: 0.7;
+    transform: scale(0.95);
+}
+
+.lightbox img.loaded {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Performance optimizations */
+.gallery-item-modern img,
+.slide img,
+.lightbox img {
+    will-change: transform, filter, opacity;
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    img[data-lazy],
+    img[data-progressive],
+    .gallery-item-modern img,
+    .slide img,
+    .lightbox img {
+        transition: none;
+        animation: none;
+    }
+    
+    .image-skeleton {
+        animation: none;
+    }
+}
+
+/* High DPI display optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    img[data-progressive] {
+        filter: blur(8px);
+    }
+}
+
+/* Low bandwidth optimizations */
+@media (prefers-reduced-data: reduce) {
+    img[data-progressive] {
+        filter: none;
+        transform: none;
+    }
+    
+    .image-skeleton {
+        display: none;
+    }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    img[data-progressive] {
+        filter: blur(6px);
+        transition-duration: 0.4s;
+    }
+    
+    .gallery-item-modern img {
+        transition-duration: 0.3s;
+    }
+}
+
+/* Dark mode skeleton colors */
+@media (prefers-color-scheme: dark) {
+    .image-skeleton {
+        background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+    }
+}
+
+/* Error state styling */
+img.error {
+    filter: grayscale(100%) brightness(0.8);
+    opacity: 0.7;
+}
+
+img.error::after {
+    content: '⚠️';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    color: #ff6b35;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 1rem;
+    border-radius: 50%;
+}
+
+/* Critical image loading indicator */
+img[data-critical] {
+    background: linear-gradient(45deg, #ff6b35, #ff8c42);
+    background-size: 200% 200%;
+    animation: critical-pulse 2s ease-in-out infinite;
+}
+
+@keyframes critical-pulse {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Progressive enhancement for modern browsers */
+@supports (backdrop-filter: blur(10px)) {
+    img[data-progressive] {
+        backdrop-filter: blur(10px);
+    }
+}
+
+/* Focus states for accessibility */
+img:focus {
+    outline: 2px solid #ff6b35;
+    outline-offset: 2px;
+}
+
+/* Print optimizations */
+@media print {
+    img[data-lazy],
+    img[data-progressive] {
+        opacity: 1 !important;
+        filter: none !important;
+        transform: none !important;
+    }
+    
+    .image-skeleton {
+        display: none !important;
+    }
+}
